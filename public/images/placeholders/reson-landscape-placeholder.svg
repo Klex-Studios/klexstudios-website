@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="740" viewBox="0 0 960 740">
+<title>Reson landscape placeholder — decorative concept, no app screenshot</title>
+<defs>
+<linearGradient id="sky" x2="0" y2="1"><stop stop-color="#A66CFF" stop-opacity=".48"/><stop offset="1" stop-color="#021116"/></linearGradient>
+<radialGradient id="light"><stop stop-color="#A66CFF" stop-opacity=".58"/><stop offset="1" stop-color="#A66CFF" stop-opacity="0"/></radialGradient>
+<linearGradient id="land" x2="0" y2="1"><stop stop-color="#A66CFF" stop-opacity=".4"/><stop offset="1" stop-color="#020a10"/></linearGradient>
+</defs>
+<rect width="960" height="740" fill="#061019"/><rect width="960" height="740" fill="url(#sky)"/>
+<ellipse cx="240" cy="270" rx="530" ry="430" fill="url(#light)"/>
+<path d="M0 430 95 340 195 362 325 170 416 296 490 249 585 354 708 157 830 304 960 220V740H0Z" fill="url(#land)"/>
+<path d="m195 362 130-192 91 126-72-48-26 40-36-2Z M585 354l123-197 122 147-100-62-31 53-29-10Z" fill="#A66CFF" opacity=".14"/>
+<path d="M0 503 123 420 252 495 363 383 482 509 633 412 750 520 868 376 960 484V740H0Z" fill="#05151c" opacity=".78"/>
+<path d="M0 635 123 565 262 648 433 564 588 616 730 562 852 610 960 532V740H0Z" fill="#A66CFF" opacity=".13"/>
+<path d="M130 740c130-160 170-99 278-150s122-56 202-136" stroke="#A66CFF" stroke-width="3" fill="none" opacity=".33"/>
+<path d="M160 740c130-153 184-86 288-144s108-75 210-125" stroke="#A66CFF" stroke-width="1" fill="none" opacity=".2"/>
+</svg>

@@ -71,6 +71,29 @@ export const dictionaries = {
       contactTitle: "Building apps that do not work against you.",
       contactLead:
         "Klex Studios is currently developing its first ecosystem around dating, party games, and social discovery for real-world connection.",
+      studio: {
+        kicker: "Behind the apps",
+        titleA: "Digital ideas.",
+        titleB: "Shared moments.",
+        textA: "Klex Studios is an independent studio focused on social apps. The starting point is everyday life: wanting to meet new people, make better dating choices, or enjoy a game night with friends.",
+        textB: "Noxa, Reson, and Elixa approach different situations with the same ambition: technology that helps people do something together. The app is a tool; the experience happens between people.",
+        focus: [
+          { title: "Meet people", text: "Noxa explores how people and groups can find real plans nearby." },
+          { title: "Choose with intention", text: "Reson focuses on meaningful dating choices instead of endless swiping." },
+          { title: "Play together", text: "Elixa focuses on shared game nights, good questions, and a quick start." },
+        ],
+      },
+      faq: {
+        kicker: "A closer look",
+        title: "Good to know.",
+        lead: "Three app projects, one studio. Here is how the ideas fit together and where to find their current progress.",
+        items: [
+          { question: "What connects the three apps?", answer: "Noxa, Reson, and Elixa are separate app projects with a shared focus on real-world connection. Social discovery, dating, and game nights are different situations in which digital tools can bring people together." },
+          { question: "Who are the apps for?", answer: "For people who want more from social apps than another feed: meeting new people, making thoughtful dating choices, or spending a good evening with friends. Each project has its own audience and purpose." },
+          { question: "How far along are the projects?", answer: "The current status is shown on each app card and product page. Noxa is in the concepting phase. Reson and Elixa are in development. Product screenshots are added when the actual interfaces are ready to show." },
+          { question: "Can I share an idea or feedback?", answer: "Yes. You can contact the studio at info.klexstudios@gmail.com. Mention the app your message is about and what you would like to improve or discuss." },
+        ],
+      },
       apps: [
         {
           name: "Noxa",
@@ -234,6 +257,41 @@ export const dictionaries = {
       placeholderTitle: "Pictures Coming Soon",
       placeholderText: "Real app screenshots will be added when Elixa is ready to show publicly.",
       placeholderText2: "Screenshots will be added here once the real app UI is ready.",
+      how: {
+        kicker: "The flow",
+        titleA: "Less setup.",
+        titleB: "More time together.",
+        lead: "Elixa is in development. The intended flow stays simple: start a round, add your group, choose an intensity, and play together. The focus is on the evening, not on navigating an app.",
+        steps: [
+          { title: "Start a round", text: "Get the evening going with a new round. The aim is a clear starting point without unnecessary app clutter." },
+          { title: "Add your players", text: "Bring your group into the round. Elixa is designed around friends playing together." },
+          { title: "Choose an intensity", text: "Casual, personal, or spicy: pick a direction that feels right for your group." },
+          { title: "Play together", text: "Read the questions and enjoy the round. Good content should keep the conversation and the evening moving." },
+        ],
+      },
+      intensities: {
+        kicker: "Your group. Your mood.",
+        title: "An intensity that fits.",
+        lead: "A round with new people feels different from one with close friends. These three directions help you choose a tone that suits your group and your evening.",
+        items: [
+          { tag: "01", title: "Casual", text: "For an easy start, mixed groups, and a night that is just getting going. The focus is on light questions and joining the conversation." },
+          { tag: "02", title: "Personal", text: "For groups that want to learn more about one another. More room for stories, opinions, and conversations beyond small talk." },
+          { tag: "03", title: "Spicy", text: "For groups that feel comfortable with more direct questions. Choose the intensity together so it suits the people in the round." },
+        ],
+      },
+      faq: {
+        kicker: "About Elixa",
+        title: "Before the first round.",
+        lead: "What the app is designed for, what matters to us, and its current stage of development.",
+        items: [
+          { question: "Who is Elixa designed for?", answer: "For friends who want to play together and for groups getting to know one another. Different intensities are intended to help the round match the people and the mood." },
+          { question: "Will Elixa work offline?", answer: "Offline play is part of the intended feature set. The aim is to keep a shared round from depending on a permanent internet connection." },
+          { question: "What is the approach to ads and subscriptions?", answer: "Elixa is being developed around uninterrupted play: good questions and a quick start instead of ad traps, subscription pressure, or forced upgrades in the middle of a round." },
+          { question: "Can I download Elixa yet?", answer: "Elixa is currently in development. There is no download link or release date on this page. Real screenshots will be added when the app interface is ready to show publicly." },
+        ],
+        contact: "Questions or ideas for Elixa?",
+        contactLink: "Send us an email",
+      },
       features: [
         {
           icon: "♕",
@@ -320,6 +378,29 @@ export const dictionaries = {
       contactTitle: "Apps bauen, die nicht gegen dich arbeiten.",
       contactLead:
         "Klex Studios entwickelt aktuell ein erstes Ökosystem rund um Dating, Trinkspiele und Social Discovery für echte Verbindung.",
+      studio: {
+        kicker: "Hinter den Apps",
+        titleA: "Digitale Ideen.",
+        titleB: "Gemeinsame Momente.",
+        textA: "Klex Studios ist ein unabhängiges Studio mit Fokus auf Social Apps. Ausgangspunkt ist der Alltag: neue Leute kennenlernen, beim Dating bewusster entscheiden oder einen Spieleabend mit Freunden verbringen.",
+        textB: "Noxa, Reson und Elixa setzen an unterschiedlichen Situationen an – mit demselben Anspruch: Technik, die Menschen dabei hilft, gemeinsam etwas zu erleben. Die App ist das Werkzeug; das Erlebnis entsteht zwischen Menschen.",
+        focus: [
+          { title: "Menschen kennenlernen", text: "Noxa beschäftigt sich damit, wie Menschen und Gruppen echte Pläne in ihrer Nähe finden können." },
+          { title: "Bewusster entscheiden", text: "Reson stellt sinnvolle Dating-Entscheidungen in den Mittelpunkt, statt endloses Swipen." },
+          { title: "Gemeinsam spielen", text: "Elixa konzentriert sich auf gemeinsame Spieleabende, gute Fragen und einen schnellen Einstieg." },
+        ],
+      },
+      faq: {
+        kicker: "Genauer hingeschaut",
+        title: "Gut zu wissen.",
+        lead: "Drei App-Projekte, ein Studio. So hängen die Ideen zusammen und hier findest du ihren aktuellen Stand.",
+        items: [
+          { question: "Was verbindet die drei Apps?", answer: "Noxa, Reson und Elixa sind eigenständige App-Projekte mit einem gemeinsamen Fokus auf echte Verbindung. Social Discovery, Dating und Spieleabende sind unterschiedliche Situationen, in denen digitale Werkzeuge Menschen zusammenbringen können." },
+          { question: "Für wen entstehen die Apps?", answer: "Für Menschen, die von Social Apps mehr erwarten als einen weiteren Feed: neue Leute kennenlernen, bewusstere Dating-Entscheidungen treffen oder einen guten Abend mit Freunden verbringen. Jedes Projekt hat seine eigene Zielgruppe und Aufgabe." },
+          { question: "Wie weit sind die Projekte?", answer: "Der aktuelle Stand steht auf jeder App-Karte und Produktseite. Noxa ist in der Konzeptphase. Reson und Elixa sind in Entwicklung. Produktscreenshots werden ergänzt, sobald die tatsächlichen Oberflächen vorzeigbar sind." },
+          { question: "Kann ich eine Idee oder Feedback teilen?", answer: "Ja. Du erreichst das Studio unter info.klexstudios@gmail.com. Schreib dazu, um welche App es geht und was du verbessern oder besprechen möchtest." },
+        ],
+      },
       apps: [
         {
           name: "Noxa",
@@ -483,6 +564,41 @@ export const dictionaries = {
       placeholderTitle: "Visuals folgen",
       placeholderText: "Echte App-Screenshots werden ergänzt, sobald Elixa öffentlich vorzeigbar ist.",
       placeholderText2: "Screenshots werden ergänzt, sobald die echte App-UI bereit ist.",
+      how: {
+        kicker: "Der Ablauf",
+        titleA: "Weniger Vorbereitung.",
+        titleB: "Mehr Zeit zusammen.",
+        lead: "Elixa ist in Entwicklung. Der geplante Ablauf bleibt einfach: Runde starten, eure Gruppe hinzufügen, eine Intensität wählen und gemeinsam spielen. Im Mittelpunkt steht der Abend, nicht die Bedienung einer App.",
+        steps: [
+          { title: "Runde starten", text: "Beginnt den Abend mit einer neuen Runde. Das Ziel ist ein klarer Einstieg ohne unnötigen App-Ballast." },
+          { title: "Spieler hinzufügen", text: "Holt eure Gruppe in die Runde. Elixa ist für Freunde gedacht, die gemeinsam spielen." },
+          { title: "Intensität wählen", text: "Locker, persönlich oder spicy: Entscheidet euch für eine Richtung, die zu eurer Gruppe passt." },
+          { title: "Gemeinsam spielen", text: "Lest die Fragen und genießt die Runde. Gute Inhalte sollen das Gespräch und euren Abend in Bewegung halten." },
+        ],
+      },
+      intensities: {
+        kicker: "Eure Gruppe. Eure Stimmung.",
+        title: "Eine Intensität, die passt.",
+        lead: "Eine Runde mit neuen Leuten fühlt sich anders an als ein Abend mit engen Freunden. Die drei Richtungen helfen euch, den Ton auf eure Gruppe und euren Abend abzustimmen.",
+        items: [
+          { tag: "01", title: "Locker", text: "Für einen entspannten Einstieg, gemischte Gruppen und einen Abend, der gerade erst beginnt. Im Fokus stehen leichte Fragen und das Ankommen in der Runde." },
+          { tag: "02", title: "Persönlich", text: "Für Gruppen, die mehr voneinander erfahren möchten. Mehr Raum für Geschichten, Meinungen und Gespräche jenseits von Small Talk." },
+          { tag: "03", title: "Spicy", text: "Für Gruppen, die sich mit direkteren Fragen wohlfühlen. Wählt die Intensität gemeinsam, damit sie zu den Menschen in der Runde passt." },
+        ],
+      },
+      faq: {
+        kicker: "Über Elixa",
+        title: "Vor der ersten Runde.",
+        lead: "Für wen die App gedacht ist, worauf es uns ankommt und wo die Entwicklung gerade steht.",
+        items: [
+          { question: "Für wen ist Elixa gedacht?", answer: "Für Freunde, die gemeinsam spielen möchten, und für Gruppen, die sich gerade kennenlernen. Unterschiedliche Intensitäten sollen dabei helfen, die Runde auf die Menschen und die Stimmung abzustimmen." },
+          { question: "Wird Elixa offline funktionieren?", answer: "Offline-Spielen gehört zum vorgesehenen Funktionsumfang. Das Ziel ist, dass eine gemeinsame Runde nicht von einer dauerhaften Internetverbindung abhängt." },
+          { question: "Wie steht Elixa zu Werbung und Abos?", answer: "Elixa wird für ungestörtes Spielen entwickelt: gute Fragen und ein schneller Einstieg statt Werbefallen, Abo-Druck oder erzwungener Upgrades mitten in der Runde." },
+          { question: "Kann ich Elixa schon herunterladen?", answer: "Elixa ist aktuell in Entwicklung. Auf dieser Seite gibt es noch keinen Download-Link und keinen Veröffentlichungstermin. Echte Screenshots folgen, sobald die App-Oberfläche öffentlich vorzeigbar ist." },
+        ],
+        contact: "Fragen oder Ideen zu Elixa?",
+        contactLink: "Schreib uns eine E-Mail",
+      },
       features: [
         {
           icon: "♕",

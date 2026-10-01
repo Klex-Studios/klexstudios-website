@@ -1,0 +1,14 @@
+.list { min-width: 0; border-top: 1px solid rgba(153, 180, 215, .25); }
+.item { min-width: 0; border-bottom: 1px solid rgba(153, 180, 215, .25); }
+.question { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 76px; padding-block: 22px; color: #edf1f8; font-size: 17px; font-weight: 600; line-height: 1.45; cursor: pointer; list-style: none; }
+.question::-webkit-details-marker { display: none; }
+.question:hover { color: var(--product-light, var(--home-mint, #57f5ac)); }
+.question:focus-visible { outline: 2px solid var(--product-light, var(--home-mint, #57f5ac)); outline-offset: 5px; border-radius: 4px; }
+.question svg { width: 21px; height: 21px; flex-shrink: 0; color: var(--product-light, var(--home-mint, #57f5ac)); }
+.item[open] .question svg { transform: rotate(180deg); }
+.answer { max-width: 70ch; padding: 0 35px 25px 0; color: #bbc6d6; }
+.list .answer p { margin: 0; color: #bbc6d6; font-size: 15px; line-height: 1.75; }
+@media (max-width: 760px) {
+  .question { min-height: 72px; font-size: 16px; gap: 16px; padding-block: 20px; }
+  .answer { padding-right: 0; }
+}

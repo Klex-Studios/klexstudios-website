@@ -1,0 +1,122 @@
+{
+  "pages": [
+    {
+      "route": "/de",
+      "title": "Klex Studios",
+      "canonical": "https://klexstudios.com/de",
+      "localizedDescription": true,
+      "openGraphAndTwitter": "passed",
+      "languageAlternates": "passed",
+      "iconFiles": "passed"
+    },
+    {
+      "route": "/de/noxa",
+      "title": "Noxa | Klex Studios",
+      "canonical": "https://klexstudios.com/de/noxa",
+      "localizedDescription": true,
+      "openGraphAndTwitter": "passed",
+      "languageAlternates": "passed",
+      "iconFiles": "passed"
+    },
+    {
+      "route": "/de/reson",
+      "title": "Reson | Klex Studios",
+      "canonical": "https://klexstudios.com/de/reson",
+      "localizedDescription": true,
+      "openGraphAndTwitter": "passed",
+      "languageAlternates": "passed",
+      "iconFiles": "passed"
+    },
+    {
+      "route": "/de/elixa",
+      "title": "Elixa | Klex Studios",
+      "canonical": "https://klexstudios.com/de/elixa",
+      "localizedDescription": true,
+      "openGraphAndTwitter": "passed",
+      "languageAlternates": "passed",
+      "iconFiles": "passed"
+    },
+    {
+      "route": "/de/impressum",
+      "title": "Impressum | Klex Studios",
+      "canonical": "https://klexstudios.com/de/impressum",
+      "localizedDescription": true,
+      "openGraphAndTwitter": "passed",
+      "languageAlternates": "passed",
+      "iconFiles": "passed"
+    },
+    {
+      "route": "/de/datenschutz",
+      "title": "Datenschutzerklärung | Klex Studios",
+      "canonical": "https://klexstudios.com/de/datenschutz",
+      "localizedDescription": true,
+      "openGraphAndTwitter": "passed",
+      "languageAlternates": "passed",
+      "iconFiles": "passed"
+    },
+    {
+      "route": "/en",
+      "title": "Klex Studios",
+      "canonical": "https://klexstudios.com/en",
+      "localizedDescription": true,
+      "openGraphAndTwitter": "passed",
+      "languageAlternates": "passed",
+      "iconFiles": "passed"
+    },
+    {
+      "route": "/en/noxa",
+      "title": "Noxa | Klex Studios",
+      "canonical": "https://klexstudios.com/en/noxa",
+      "localizedDescription": true,
+      "openGraphAndTwitter": "passed",
+      "languageAlternates": "passed",
+      "iconFiles": "passed"
+    },
+    {
+      "route": "/en/reson",
+      "title": "Reson | Klex Studios",
+      "canonical": "https://klexstudios.com/en/reson",
+      "localizedDescription": true,
+      "openGraphAndTwitter": "passed",
+      "languageAlternates": "passed",
+      "iconFiles": "passed"
+    },
+    {
+      "route": "/en/elixa",
+      "title": "Elixa | Klex Studios",
+      "canonical": "https://klexstudios.com/en/elixa",
+      "localizedDescription": true,
+      "openGraphAndTwitter": "passed",
+      "languageAlternates": "passed",
+      "iconFiles": "passed"
+    },
+    {
+      "route": "/en/impressum",
+      "title": "Legal Notice | Klex Studios",
+      "canonical": "https://klexstudios.com/en/impressum",
+      "localizedDescription": true,
+      "openGraphAndTwitter": "passed",
+      "languageAlternates": "passed",
+      "iconFiles": "passed"
+    },
+    {
+      "route": "/en/privacy",
+      "title": "Privacy Policy | Klex Studios",
+      "canonical": "https://klexstudios.com/en/privacy",
+      "localizedDescription": true,
+      "openGraphAndTwitter": "passed",
+      "languageAlternates": "passed",
+      "iconFiles": "passed"
+    }
+  ],
+  "sitemapCanonicalUrls": 12,
+  "sitemapLanguagePairs": "passed",
+  "robots": "passed",
+  "socialImage": {
+    "format": "PNG",
+    "width": 1200,
+    "height": 630
+  },
+  "designImplementations": "unchanged",
+  "scope": "Isolated production build of the supplied sources. Original deployment configuration and middleware were not supplied."
+}

@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   description:
     "Klex Studios builds digital products for real social moments, dating, events, parties, and connection.",
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-icon.png",
+    icon: { url: "/logos/klex-logo.png", type: "image/png" },
+    apple: "/logos/klex-logo.png",
   },
   openGraph: {
     title: "Klex Studios",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "Klex Studios",
     images: [
       {
-        url: "/opengraph-image.png",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
         alt: "Klex Studios",

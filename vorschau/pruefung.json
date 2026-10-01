@@ -1,0 +1,316 @@
+{
+  "reports": [
+    {
+      "path": "/de",
+      "width": 1440,
+      "status": "passed"
+    },
+    {
+      "path": "/de",
+      "width": 1001,
+      "status": "passed"
+    },
+    {
+      "path": "/de",
+      "width": 768,
+      "status": "passed"
+    },
+    {
+      "path": "/de",
+      "width": 390,
+      "status": "passed"
+    },
+    {
+      "path": "/de",
+      "width": 320,
+      "status": "passed"
+    },
+    {
+      "path": "/de/elixa",
+      "width": 1440,
+      "status": "passed"
+    },
+    {
+      "path": "/de/elixa",
+      "width": 1001,
+      "status": "passed"
+    },
+    {
+      "path": "/de/elixa",
+      "width": 768,
+      "status": "passed"
+    },
+    {
+      "path": "/de/elixa",
+      "width": 390,
+      "status": "passed"
+    },
+    {
+      "path": "/de/elixa",
+      "width": 320,
+      "status": "passed"
+    },
+    {
+      "path": "/de/noxa",
+      "width": 1440,
+      "status": "passed"
+    },
+    {
+      "path": "/de/noxa",
+      "width": 1001,
+      "status": "passed"
+    },
+    {
+      "path": "/de/noxa",
+      "width": 768,
+      "status": "passed"
+    },
+    {
+      "path": "/de/noxa",
+      "width": 390,
+      "status": "passed"
+    },
+    {
+      "path": "/de/noxa",
+      "width": 320,
+      "status": "passed"
+    },
+    {
+      "path": "/de/reson",
+      "width": 1440,
+      "status": "passed"
+    },
+    {
+      "path": "/de/reson",
+      "width": 1001,
+      "status": "passed"
+    },
+    {
+      "path": "/de/reson",
+      "width": 768,
+      "status": "passed"
+    },
+    {
+      "path": "/de/reson",
+      "width": 390,
+      "status": "passed"
+    },
+    {
+      "path": "/de/reson",
+      "width": 320,
+      "status": "passed"
+    },
+    {
+      "path": "/de/impressum",
+      "width": 1440,
+      "status": "passed"
+    },
+    {
+      "path": "/de/impressum",
+      "width": 1001,
+      "status": "passed"
+    },
+    {
+      "path": "/de/impressum",
+      "width": 768,
+      "status": "passed"
+    },
+    {
+      "path": "/de/impressum",
+      "width": 390,
+      "status": "passed"
+    },
+    {
+      "path": "/de/impressum",
+      "width": 320,
+      "status": "passed"
+    },
+    {
+      "path": "/de/datenschutz",
+      "width": 1440,
+      "status": "passed"
+    },
+    {
+      "path": "/de/datenschutz",
+      "width": 1001,
+      "status": "passed"
+    },
+    {
+      "path": "/de/datenschutz",
+      "width": 768,
+      "status": "passed"
+    },
+    {
+      "path": "/de/datenschutz",
+      "width": 390,
+      "status": "passed"
+    },
+    {
+      "path": "/de/datenschutz",
+      "width": 320,
+      "status": "passed"
+    },
+    {
+      "path": "/en",
+      "width": 1440,
+      "status": "passed"
+    },
+    {
+      "path": "/en",
+      "width": 1001,
+      "status": "passed"
+    },
+    {
+      "path": "/en",
+      "width": 768,
+      "status": "passed"
+    },
+    {
+      "path": "/en",
+      "width": 390,
+      "status": "passed"
+    },
+    {
+      "path": "/en",
+      "width": 320,
+      "status": "passed"
+    },
+    {
+      "path": "/en/elixa",
+      "width": 1440,
+      "status": "passed"
+    },
+    {
+      "path": "/en/elixa",
+      "width": 1001,
+      "status": "passed"
+    },
+    {
+      "path": "/en/elixa",
+      "width": 768,
+      "status": "passed"
+    },
+    {
+      "path": "/en/elixa",
+      "width": 390,
+      "status": "passed"
+    },
+    {
+      "path": "/en/elixa",
+      "width": 320,
+      "status": "passed"
+    },
+    {
+      "path": "/en/noxa",
+      "width": 1440,
+      "status": "passed"
+    },
+    {
+      "path": "/en/noxa",
+      "width": 1001,
+      "status": "passed"
+    },
+    {
+      "path": "/en/noxa",
+      "width": 768,
+      "status": "passed"
+    },
+    {
+      "path": "/en/noxa",
+      "width": 390,
+      "status": "passed"
+    },
+    {
+      "path": "/en/noxa",
+      "width": 320,
+      "status": "passed"
+    },
+    {
+      "path": "/en/reson",
+      "width": 1440,
+      "status": "passed"
+    },
+    {
+      "path": "/en/reson",
+      "width": 1001,
+      "status": "passed"
+    },
+    {
+      "path": "/en/reson",
+      "width": 768,
+      "status": "passed"
+    },
+    {
+      "path": "/en/reson",
+      "width": 390,
+      "status": "passed"
+    },
+    {
+      "path": "/en/reson",
+      "width": 320,
+      "status": "passed"
+    },
+    {
+      "path": "/en/impressum",
+      "width": 1440,
+      "status": "passed"
+    },
+    {
+      "path": "/en/impressum",
+      "width": 1001,
+      "status": "passed"
+    },
+    {
+      "path": "/en/impressum",
+      "width": 768,
+      "status": "passed"
+    },
+    {
+      "path": "/en/impressum",
+      "width": 390,
+      "status": "passed"
+    },
+    {
+      "path": "/en/impressum",
+      "width": 320,
+      "status": "passed"
+    },
+    {
+      "path": "/en/privacy",
+      "width": 1440,
+      "status": "passed"
+    },
+    {
+      "path": "/en/privacy",
+      "width": 1001,
+      "status": "passed"
+    },
+    {
+      "path": "/en/privacy",
+      "width": 768,
+      "status": "passed"
+    },
+    {
+      "path": "/en/privacy",
+      "width": 390,
+      "status": "passed"
+    },
+    {
+      "path": "/en/privacy",
+      "width": 320,
+      "status": "passed"
+    }
+  ],
+  "checks": [
+    "Sticky header",
+    "Mobile menu + Escape + focus trap + body unlock",
+    "Locale navigation",
+    "Same-page menu anchors",
+    "Resize closes mobile menu",
+    "Spotlight response and reset",
+    "Scroll reveals",
+    "Reduced motion + preference change",
+    "No-JavaScript fallback"
+  ],
+  "pageErrors": []
+}

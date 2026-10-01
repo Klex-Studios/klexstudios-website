@@ -1,10 +1,9 @@
-import Image from "next/image";
-import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import SiteFooter from "@/components/SiteFooter";
-import SiteHeader from "@/components/SiteHeader";
-import { getDictionary, isLocale, Locale } from "@/lib/i18n";
+import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
+import { ArrowIcon, ProductFeatures, ProductHeroVisual, ProductPreview, ProductShell } from "@/components/ProductShell";
+import styles from "@/components/product.module.css";
+import { pageMetadata } from "@/lib/metadata";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -16,132 +15,44 @@ async function getLocale(params: Props["params"]): Promise<Locale> {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = await getLocale(params);
-  const t = getDictionary(locale);
-
-  return {
-    title: "Noxa",
-    description: t.noxa.lead,
-    alternates: {
-      canonical: `/${locale}/noxa`,
-      languages: { de: "/de/noxa", en: "/en/noxa" },
-    },
-  };
+  return pageMetadata(locale, "noxa");
 }
 
 export default async function NoxaPage({ params }: Props) {
-  const locale = await getLocale(params);
-  const t = getDictionary(locale).noxa;
-
-  return (
-    <main
-      className="site-shell noxa-shell"
-      style={
-        {
-          "--noxa-accent": "#3b6dff",
-          "--noxa-accent-rgb": "59, 109, 255",
-        } as CSSProperties
-      }
-    >
-      <SiteHeader locale={locale} active="noxa" />
-
-      <section className="noxa-hero">
-        <div className="noxa-hero-copy">
-          <p className="noxa-kicker">{t.kicker}</p>
-          <h1>
-            {t.titleA}
-            <br />
-            {t.titleB}
-            <br />   <span>{t.titleAccentA}</span>
-            <br />
-            <span>{t.titleAccentB}</span>
-          </h1>
-          <p className="noxa-lead">{t.lead}</p>
-
-          <div className="noxa-actions">
-            <a className="noxa-primary" href="#screens">
-              {t.primary} <span>↗</span>
-            </a>
-            <a className="noxa-secondary" href="#concept">
-              {t.secondary} <span>▷</span>
-            </a>
-          </div>
-
-          <div className="noxa-platforms" aria-label="Product status">
-            <span>{t.status1}</span>
-            <span>{t.status2}</span>
-          </div>
+  const locale = await getLocale(params), t = getDictionary(locale).noxa;
+  return <ProductShell locale={locale} product="noxa">
+    <section className={`${styles.container} ${styles.hero}`} aria-labelledby="noxa-title">
+      <div className={styles.heroCopy}>
+        <p className={styles.kicker}>{t.kicker}</p>
+        <h1 id="noxa-title" className={styles.heroTitle}>
+          <span className={styles.titleLine}>{t.titleA}</span>
+          <span className={styles.titleLine}>{t.titleB}</span>
+          <span className={styles.accentTitle}>{t.titleAccentA} {t.titleAccentB}</span>
+        </h1>
+        <p className={styles.lead}>{t.lead}</p>
+        <div className={styles.actions}>
+          <a className={styles.primary} href="#screens">{t.primary}<ArrowIcon /></a>
+          <a className={styles.secondary} href="#concept">{t.secondary}<ArrowIcon /></a>
         </div>
-
-        <div className="app-coming-soon-visual placeholder-blue">
-          <div className="app-coming-soon-card">
-            <span className="app-status-pill">{t.placeholderStatus}</span>
-            <span className="app-placeholder-logo-wrap">
-              <Image
-                src="/logos/noxa-logo.png"
-                alt="Noxa logo"
-                width={120}
-                height={120}
-                priority
-                className="app-placeholder-logo"
-              />
-            </span>
-            <h3>{t.placeholderTitle}</h3>
-            <p>{t.placeholderText}</p>
-          </div>
+        <ul className={styles.micro} aria-label={locale === "de" ? "Produktstatus" : "Product status"}>
+          <li>{t.status1}</li><li>{t.status2}</li>
+        </ul>
+      </div>
+      <ProductHeroVisual product="noxa" status={t.placeholderStatus} title={t.placeholderTitle} text={t.placeholderText} />
+    </section>
+    <ProductFeatures features={t.features} label={locale === "de" ? "Noxa Funktionen" : "Noxa features"} />
+    <section id="screens" className={`${styles.container} ${styles.showcase}`} aria-labelledby="noxa-story-title">
+      <ProductPreview product="noxa" status={t.placeholderStatus} title={t.placeholderTitle} text={t.placeholderText2} />
+      <div id="concept" className={styles.story}>
+        <p className={styles.kicker}>{t.storyKicker}</p>
+        <h2 id="noxa-story-title" className={styles.sectionTitle}>{t.storyTitleA}<br />{t.storyTitleB}</h2>
+        <p className={styles.storyText}>{t.storyText}</p>
+        <div className={styles.principles}>
+          {t.principles.map((principle, index) => <article key={principle.title} className={styles.principle}>
+            <span aria-hidden="true">0{index + 1}</span><h3>{principle.title}</h3><p>{principle.text}</p>
+          </article>)}
         </div>
-      </section>
-
-      <section className="noxa-feature-strip" aria-label="Noxa features">
-        {t.features.map((feature) => (
-          <article key={feature.title}>
-            <span className="noxa-feature-icon">{feature.icon}</span>
-            <div>
-              <h2>{feature.title}</h2>
-              <p>{feature.text}</p>
-            </div>
-          </article>
-        ))}
-      </section>
-
-      <section className="noxa-showcase" id="screens">
-        <div className="app-coming-soon-visual placeholder-blue" aria-label="Noxa app screenshots coming soon">
-          <div className="app-coming-soon-card">
-            <span className="app-status-pill">{t.placeholderStatus}</span>
-            <span className="app-placeholder-logo-wrap">
-              <Image
-                src="/logos/noxa-logo.png"
-                alt="Noxa logo"
-                width={120}
-                height={120}
-                className="app-placeholder-logo"
-              />
-            </span>
-            <h3>{t.placeholderTitle}</h3>
-            <p>{t.placeholderText2}</p>
-          </div>
-        </div>
-
-        <div className="noxa-story" id="concept">
-          <p className="noxa-kicker">{t.storyKicker}</p>
-          <h2>
-            {t.storyTitleA}
-            <br />
-            {t.storyTitleB}
-          </h2>
-          <p>{t.storyText}</p>
-
-          <div className="noxa-principles">
-            {t.principles.map((principle) => (
-              <article key={principle.title}>
-                <span>✦</span>
-                <h3>{principle.title}</h3>
-                <p>{principle.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-      <SiteFooter locale={locale} />
-    </main>
-  );
+      </div>
+    </section>
+  </ProductShell>;
 }

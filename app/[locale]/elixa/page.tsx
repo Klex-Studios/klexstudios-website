@@ -1,10 +1,10 @@
-import Image from "next/image";
-import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import SiteFooter from "@/components/SiteFooter";
-import SiteHeader from "@/components/SiteHeader";
-import { getDictionary, isLocale, Locale } from "@/lib/i18n";
+import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
+import { ArrowIcon, CheckIcon, ProductFeatures, ProductHeroVisual, ProductPreview, ProductShell } from "@/components/ProductShell";
+import styles from "@/components/product.module.css";
+import { pageMetadata } from "@/lib/metadata";
+import FaqList from "@/components/FaqList";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -16,142 +16,73 @@ async function getLocale(params: Props["params"]): Promise<Locale> {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = await getLocale(params);
-  const t = getDictionary(locale);
-
-  return {
-    title: "Elixa",
-    description: t.elixa.lead,
-    alternates: {
-      canonical: `/${locale}/elixa`,
-      languages: { de: "/de/elixa", en: "/en/elixa" },
-    },
-  };
+  return pageMetadata(locale, "elixa");
 }
 
 export default async function ElixaPage({ params }: Props) {
-  const locale = await getLocale(params);
-  const t = getDictionary(locale).elixa;
-
-  return (
-    <main
-      className="site-shell elixa-shell"
-      style={
-        {
-          "--elixa-accent": "#38F06F",
-          "--elixa-accent-rgb": "56, 240, 111",
-        } as CSSProperties
-      }
-    >
-      <SiteHeader locale={locale} active="elixa" />
-
-      <section className="elixa-hero">
-        <div className="elixa-hero-copy">
-          <p className="elixa-kicker">{t.kicker}</p>
-
-          <h1>
-            {t.titleA}
-            <br />
-            <span>{t.titleAccent}</span>
-          </h1>
-
-          <p className="elixa-lead">{t.lead}</p>
-
-          <div className="elixa-actions">
-            <a className="elixa-primary" href="#games">
-              {t.primary} <span>↗</span>
-            </a>
-            <a className="elixa-secondary" href="#games">
-              {t.secondary} <span>□</span>
-            </a>
-          </div>
-
-          <div className="elixa-micro-row">
-            {t.micro.map((item) => (
-              <span key={item}>{item}</span>
-            ))}
-          </div>
+  const locale = await getLocale(params), t = getDictionary(locale).elixa;
+  return <ProductShell locale={locale} product="elixa">
+    <section className={`${styles.container} ${styles.hero}`} aria-labelledby="elixa-title">
+      <div className={styles.heroCopy} data-entrance="copy">
+        <p className={styles.kicker}>{t.kicker}</p>
+        <h1 id="elixa-title" className={styles.heroTitle}><span className={styles.titleLine}>{t.titleA}</span><span className={styles.accentTitle}>{t.titleAccent}</span></h1>
+        <p className={styles.lead}>{t.lead}</p>
+        <div className={styles.actions}>
+          <a className={styles.primary} data-button="" href="#games">{t.primary}<ArrowIcon /></a>
+          <a className={styles.secondary} href="#games">{t.secondary}<ArrowIcon /></a>
         </div>
-
-        <div className="app-coming-soon-visual placeholder-green">
-          <div className="app-coming-soon-card">
-            <span className="app-status-pill">{t.placeholderStatus}</span>
-            <span className="app-placeholder-logo-wrap">
-              <Image
-                src="/logos/elixa-logo.png"
-                alt="Elixa logo"
-                width={120}
-                height={120}
-                priority
-                className="app-placeholder-logo"
-              />
-            </span>
-            <h3>{t.placeholderTitle}</h3>
-            <p>{t.placeholderText}</p>
-          </div>
+        <ul className={styles.micro}>{t.micro.map(item => <li key={item}><CheckIcon />{item}</li>)}</ul>
+      </div>
+      <ProductHeroVisual product="elixa" status={t.placeholderStatus} title={t.placeholderTitle} text={t.placeholderText} />
+    </section>
+    <ProductFeatures features={t.features} label={locale === "de" ? "Elixa Funktionen" : "Elixa features"} />
+    <section className={`${styles.container} ${styles.detailSection}`} aria-labelledby="elixa-how-title">
+      <div className={styles.detailHeading}>
+        <div><p className={styles.kicker}>{t.how.kicker}</p><h2 id="elixa-how-title" className={styles.sectionTitle}>{t.how.titleA}<br />{t.how.titleB}</h2></div>
+        <p className={styles.detailLead}>{t.how.lead}</p>
+      </div>
+      <ol className={styles.steps}>
+        {t.how.steps.map((step, index) => <li key={step.title} className={styles.step} data-spotlight="">
+          <span className={styles.stepNumber} aria-hidden="true">0{index + 1}</span><h3>{step.title}</h3><p>{step.text}</p>
+        </li>)}
+      </ol>
+    </section>
+    <section id="games" className={styles.intensitySection} aria-labelledby="elixa-intensity-title">
+      <div className={styles.container}>
+        <div className={styles.detailHeading}>
+          <div><p className={styles.kicker}>{t.intensities.kicker}</p><h2 id="elixa-intensity-title" className={styles.sectionTitle}>{t.intensities.title}</h2></div>
+          <p className={styles.detailLead}>{t.intensities.lead}</p>
         </div>
-      </section>
-
-      <section className="elixa-feature-strip" aria-label="Elixa features">
-        {t.features.map((feature) => (
-          <article key={feature.title}>
-            <span className="elixa-feature-icon">{feature.icon}</span>
-            <div>
-              <h2>{feature.title}</h2>
-              <p>{feature.text}</p>
-            </div>
-          </article>
-        ))}
-      </section>
-
-      <section className="elixa-showcase" id="games">
-        <div className="elixa-story">
-          <p className="elixa-section-kicker">{t.storyKicker}</p>
-          <h2>
-            {t.storyTitleA}
-            <br />
-            {t.storyTitleB}
-          </h2>
-          <p>{t.storyText}</p>
-
-          <a className="elixa-outline-button" href="#games">
-            {t.storyLink} <span>↗</span>
-          </a>
+        <div className={styles.intensityGrid}>
+          {t.intensities.items.map(item => <article key={item.title} className={styles.intensityCard} data-spotlight="">
+            <span className={styles.intensityTag} aria-hidden="true">{item.tag}</span><h3>{item.title}</h3><p>{item.text}</p>
+          </article>)}
         </div>
-
-        <div className="app-coming-soon-visual placeholder-green" aria-label="Elixa app screenshots coming soon">
-          <div className="app-coming-soon-card">
-            <span className="app-status-pill">{t.placeholderStatus}</span>
-            <span className="app-placeholder-logo-wrap">
-              <Image
-                src="/logos/elixa-logo.png"
-                alt="Elixa logo"
-                width={120}
-                height={120}
-                className="app-placeholder-logo"
-              />
-            </span>
-            <h3>{t.placeholderTitle}</h3>
-            <p>{t.placeholderText2}</p>
-          </div>
-        </div>
-
-        <div className="elixa-vibe">
-          <p className="elixa-section-kicker">{t.vibeKicker}</p>
-          <h2>
-            {t.vibeTitleA}
-            <br />
-            {t.vibeTitleB}
-          </h2>
-          <p>{t.vibeText}</p>
-
-          <ul>
-            {t.vibePoints.map((point) => (
-              <li key={point}>{point}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
-      <SiteFooter locale={locale} />
-    </main>
-  );
+      </div>
+    </section>
+    <section className={`${styles.container} ${styles.showcase}`} aria-labelledby="elixa-story-title">
+      <div className={styles.story}>
+        <p className={styles.kicker}>{t.storyKicker}</p>
+        <h2 id="elixa-story-title" className={styles.sectionTitle}>{t.storyTitleA}<br />{t.storyTitleB}</h2>
+        <p className={styles.storyText}>{t.storyText}</p>
+        <a className={styles.secondary} href="#games">{t.storyLink}<ArrowIcon /></a>
+      </div>
+      <ProductPreview product="elixa" status={t.placeholderStatus} title={t.placeholderTitle} text={t.placeholderText2} />
+    </section>
+    <section className={`${styles.container} ${styles.closing}`} aria-labelledby="elixa-vibe-title">
+      <div className={styles.story}>
+        <p className={styles.kicker}>{t.vibeKicker}</p>
+        <h2 id="elixa-vibe-title" className={styles.sectionTitle}>{t.vibeTitleA}<br />{t.vibeTitleB}</h2>
+        <p className={styles.storyText}>{t.vibeText}</p>
+      </div>
+      <ul className={styles.points}>{t.vibePoints.map(point => <li key={point}><CheckIcon /><span>{point}</span></li>)}</ul>
+    </section>
+    <section className={`${styles.container} ${styles.faqSection}`} aria-labelledby="elixa-faq-title">
+      <div className={styles.faqIntro}>
+        <p className={styles.kicker}>{t.faq.kicker}</p><h2 id="elixa-faq-title" className={styles.sectionTitle}>{t.faq.title}</h2><p className={styles.detailLead}>{t.faq.lead}</p>
+        <p className={styles.faqContact}>{t.faq.contact}</p><a className={styles.secondary} href="mailto:info.klexstudios@gmail.com">{t.faq.contactLink}<ArrowIcon /></a>
+      </div>
+      <FaqList items={t.faq.items} />
+    </section>
+  </ProductShell>;
 }
