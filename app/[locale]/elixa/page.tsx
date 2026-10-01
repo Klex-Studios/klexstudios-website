@@ -1,88 +1,228 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
-import { ArrowIcon, CheckIcon, ProductFeatures, ProductHeroVisual, ProductPreview, ProductShell } from "@/components/ProductShell";
-import styles from "@/components/product.module.css";
-import { pageMetadata } from "@/lib/metadata";
-import FaqList from "@/components/FaqList";
 
-type Props = { params: Promise<{ locale: string }> };
+import ProductCaseStudy from "@/components/ProductCaseStudy";
+import {
+  getDictionary,
+  isLocale,
+  type Locale,
+} from "@/lib/i18n";
 
-async function getLocale(params: Props["params"]): Promise<Locale> {
+type Props = {
+  params: Promise<{
+    locale: string;
+  }>;
+};
+
+async function getLocale(
+  params: Props["params"]
+): Promise<Locale> {
   const { locale } = await params;
-  if (!isLocale(locale)) notFound();
+
+  if (!isLocale(locale)) {
+    notFound();
+  }
+
   return locale;
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata> {
   const locale = await getLocale(params);
-  return pageMetadata(locale, "elixa");
+  const t = getDictionary(locale).elixa;
+
+  return {
+    title: "Elixa | Klex Studios",
+    description: t.lead,
+    alternates: {
+      canonical: `/${locale}/elixa`,
+      languages: {
+        de: "/de/elixa",
+        en: "/en/elixa",
+      },
+    },
+  };
 }
 
-export default async function ElixaPage({ params }: Props) {
-  const locale = await getLocale(params), t = getDictionary(locale).elixa;
-  return <ProductShell locale={locale} product="elixa">
-    <section className={`${styles.container} ${styles.hero}`} aria-labelledby="elixa-title">
-      <div className={styles.heroCopy} data-entrance="copy">
-        <p className={styles.kicker}>{t.kicker}</p>
-        <h1 id="elixa-title" className={styles.heroTitle}><span className={styles.titleLine}>{t.titleA}</span><span className={styles.accentTitle}>{t.titleAccent}</span></h1>
-        <p className={styles.lead}>{t.lead}</p>
-        <div className={styles.actions}>
-          <a className={styles.primary} data-button="" href="#games">{t.primary}<ArrowIcon /></a>
-          <a className={styles.secondary} href="#games">{t.secondary}<ArrowIcon /></a>
-        </div>
-        <ul className={styles.micro}>{t.micro.map(item => <li key={item}><CheckIcon />{item}</li>)}</ul>
-      </div>
-      <ProductHeroVisual product="elixa" status={t.placeholderStatus} title={t.placeholderTitle} text={t.placeholderText} />
-    </section>
-    <ProductFeatures features={t.features} label={locale === "de" ? "Elixa Funktionen" : "Elixa features"} />
-    <section className={`${styles.container} ${styles.detailSection}`} aria-labelledby="elixa-how-title">
-      <div className={styles.detailHeading}>
-        <div><p className={styles.kicker}>{t.how.kicker}</p><h2 id="elixa-how-title" className={styles.sectionTitle}>{t.how.titleA}<br />{t.how.titleB}</h2></div>
-        <p className={styles.detailLead}>{t.how.lead}</p>
-      </div>
-      <ol className={styles.steps}>
-        {t.how.steps.map((step, index) => <li key={step.title} className={styles.step} data-spotlight="">
-          <span className={styles.stepNumber} aria-hidden="true">0{index + 1}</span><h3>{step.title}</h3><p>{step.text}</p>
-        </li>)}
-      </ol>
-    </section>
-    <section id="games" className={styles.intensitySection} aria-labelledby="elixa-intensity-title">
-      <div className={styles.container}>
-        <div className={styles.detailHeading}>
-          <div><p className={styles.kicker}>{t.intensities.kicker}</p><h2 id="elixa-intensity-title" className={styles.sectionTitle}>{t.intensities.title}</h2></div>
-          <p className={styles.detailLead}>{t.intensities.lead}</p>
-        </div>
-        <div className={styles.intensityGrid}>
-          {t.intensities.items.map(item => <article key={item.title} className={styles.intensityCard} data-spotlight="">
-            <span className={styles.intensityTag} aria-hidden="true">{item.tag}</span><h3>{item.title}</h3><p>{item.text}</p>
-          </article>)}
-        </div>
-      </div>
-    </section>
-    <section className={`${styles.container} ${styles.showcase}`} aria-labelledby="elixa-story-title">
-      <div className={styles.story}>
-        <p className={styles.kicker}>{t.storyKicker}</p>
-        <h2 id="elixa-story-title" className={styles.sectionTitle}>{t.storyTitleA}<br />{t.storyTitleB}</h2>
-        <p className={styles.storyText}>{t.storyText}</p>
-        <a className={styles.secondary} href="#games">{t.storyLink}<ArrowIcon /></a>
-      </div>
-      <ProductPreview product="elixa" status={t.placeholderStatus} title={t.placeholderTitle} text={t.placeholderText2} />
-    </section>
-    <section className={`${styles.container} ${styles.closing}`} aria-labelledby="elixa-vibe-title">
-      <div className={styles.story}>
-        <p className={styles.kicker}>{t.vibeKicker}</p>
-        <h2 id="elixa-vibe-title" className={styles.sectionTitle}>{t.vibeTitleA}<br />{t.vibeTitleB}</h2>
-        <p className={styles.storyText}>{t.vibeText}</p>
-      </div>
-      <ul className={styles.points}>{t.vibePoints.map(point => <li key={point}><CheckIcon /><span>{point}</span></li>)}</ul>
-    </section>
-    <section className={`${styles.container} ${styles.faqSection}`} aria-labelledby="elixa-faq-title">
-      <div className={styles.faqIntro}>
-        <p className={styles.kicker}>{t.faq.kicker}</p><h2 id="elixa-faq-title" className={styles.sectionTitle}>{t.faq.title}</h2><p className={styles.detailLead}>{t.faq.lead}</p>
-        <p className={styles.faqContact}>{t.faq.contact}</p><a className={styles.secondary} href="mailto:info.klexstudios@gmail.com">{t.faq.contactLink}<ArrowIcon /></a>
-      </div>
-      <FaqList items={t.faq.items} />
-    </section>
-  </ProductShell>;
+export default async function ElixaPage({
+  params,
+}: Props) {
+  const locale = await getLocale(params);
+  const t = getDictionary(locale).elixa;
+  const de = locale === "de";
+
+  return (
+    <ProductCaseStudy
+      locale={locale}
+      config={{
+        key: "elixa",
+
+        name: "Elixa",
+        logo: "/logos/elixa-logo.png",
+
+        accent: "#38F06F",
+        accentRgb: "56, 240, 111",
+
+        kicker: t.kicker,
+
+        title: (
+          <>
+            {t.titleA}
+            <br />
+            <span>
+              {t.titleAccent}
+            </span>
+          </>
+        ),
+
+        lead: t.lead,
+
+        primaryLabel: t.primary,
+        secondaryLabel: t.secondary,
+
+        status: t.placeholderStatus,
+        build: de
+          ? "Fortgeschrittener Prototyp"
+          : "Advanced prototype",
+        platform: "Mobile",
+
+        version: de
+          ? "Fortgeschrittener Prototyp"
+          : "Advanced prototype",
+        updated: "02.10.2026",
+
+        micro: t.micro,
+
+        features: t.features,
+
+        story: {
+          kicker: t.storyKicker,
+
+          title: (
+            <>
+              {t.storyTitleA}
+              <br />
+              {t.storyTitleB}
+            </>
+          ),
+
+          text: t.storyText,
+
+          points: t.vibePoints.map(
+            (point) => ({
+              title: point,
+              text: de
+                ? "Ein Grundprinzip hinter dem Spielerlebnis und Produktdesign von Elixa."
+                : "A core principle behind Elixa's gameplay and product design.",
+            })
+          ),
+        },
+
+        previews: [
+          {
+            label: de
+              ? "Spielauswahl"
+              : "Game selection",
+          },
+          {
+            label: de
+              ? "Spielrunde"
+              : "Game round",
+          },
+          {
+            label: de
+              ? "Gruppenmodus"
+              : "Group mode",
+          },
+        ],
+
+        timeline: {
+          kicker: "Development",
+
+          title: de
+            ? "Vom Spielkonzept zum fertigen Produkt."
+            : "From game concept to finished product.",
+
+          lead: de
+            ? "Der Kernprototyp steht. Der Fokus liegt jetzt auf Qualität, Inhalt, Feinschliff und einem Produkt, das sich in echten Gruppen schnell und unkompliziert spielen lässt."
+            : "The core prototype exists. The focus now is quality, content, refinement and turning it into a product that feels fast and effortless to play in real groups.",
+
+          items: [
+            {
+              title: de
+                ? "Produktidee"
+                : "Product concept",
+              text: de
+                ? "Grundidee, Spielmechanik und Positionierung definieren."
+                : "Define the core idea, game mechanics and positioning.",
+              status: "done",
+            },
+            {
+              title: de
+                ? "Core-Prototyp"
+                : "Core prototype",
+              text: de
+                ? "Die zentralen Spielfunktionen als Mobile-App umsetzen."
+                : "Implement the core game functionality as a mobile app.",
+              status: "done",
+            },
+            {
+              meta: de
+                ? "Aktuell"
+                : "Current",
+              title: de
+                ? "Content & Feinschliff"
+                : "Content & refinement",
+              text: de
+                ? "Fragen, Spielmodi, Balancing und Nutzererlebnis weiter verbessern."
+                : "Improve questions, game modes, balancing and the overall user experience.",
+              status: "current",
+            },
+            {
+              title: de
+                ? "Öffentliche Produktvisuals"
+                : "Public product visuals",
+              text: de
+                ? "Echte Screenshots und eine finale Produktdarstellung veröffentlichen."
+                : "Publish real screenshots and a final product presentation.",
+              status: "planned",
+            },
+            {
+              title: de
+                ? "Release-Vorbereitung"
+                : "Release preparation",
+              text: de
+                ? "Stabilität, UX und Veröffentlichung vorbereiten."
+                : "Prepare stability, UX and distribution for release.",
+              status: "planned",
+            },
+          ],
+        },
+
+        changelog: [
+          {
+            date: "02.10.2026",
+            title: de
+              ? "Neue Produkt-Case-Study"
+              : "New product case study",
+            text: de
+              ? "Elixa erhält eine deutlich ausführlichere Darstellung mit Features, Roadmap, Phone-Mockups, Tech Stack und Entwicklungsstatus."
+              : "Elixa now has a much richer presentation with features, roadmap, phone mockups, tech stack and development status.",
+          },
+        ],
+
+        techStack: [
+          "React Native",
+          "Expo",
+          "Supabase",
+          "Product Design",
+        ],
+
+        techNote: de
+          ? "Mobile-App-Entwicklung mit Fokus auf schnellen Spielfluss, klare Nutzerführung und möglichst wenig Reibung."
+          : "Mobile app development focused on fast gameplay, clear user flows and minimal friction.",
+      }}
+    />
+  );
 }
