@@ -92,6 +92,42 @@ export default async function NoxaPage({
         version: de ? "Konzept" : "Concept",
         updated: "02.10.2026",
 
+        snapshot: {
+          kicker: "Current Build",
+          title: de
+            ? "Aus einer Idee wird ein klares Produktkonzept."
+            : "Turning an idea into a clear product concept.",
+          lead: de
+            ? "Noxa ist bewusst noch früher als Reson und Elixa. Aktuell wird festgelegt, wie Menschen, Gruppen und spontane Pläne sinnvoll zusammenkommen sollen."
+            : "Noxa is intentionally earlier than Reson and Elixa. The current work defines how people, groups and spontaneous plans should come together.",
+          current: de ? "Produktkonzept" : "Product concept",
+          done: de
+            ? [
+                "Social-Discovery-Zielbild definiert",
+                "Kernfälle Menschen, Gruppen und Pläne festgelegt",
+                "Erste Produkt- und UX-Richtung ausgearbeitet",
+              ]
+            : [
+                "Social-discovery vision defined",
+                "Core cases for people, groups and plans defined",
+                "Initial product and UX direction developed",
+              ],
+          next: de
+            ? [
+                "UX-Flows konkretisieren",
+                "Ersten Mobile-Prototyp bauen",
+                "Konzept mit Nutzern validieren",
+              ]
+            : [
+                "Detail the UX flows",
+                "Build the first mobile prototype",
+                "Validate the concept with users",
+              ],
+          note: de
+            ? "Die UI-Screens sind bewusst als Concept Preview gekennzeichnet."
+            : "The UI screens are intentionally presented as concept previews.",
+        },
+
         micro: [
           t.status1,
           t.status2,
@@ -116,19 +152,59 @@ export default async function NoxaPage({
 
         previews: [
           {
-            label: de
-              ? "Menschen entdecken"
-              : "Discover people",
+            label: de ? "Entdecken" : "Discover",
+            image: "/images/home/noxa-friends-v2.webp",
+            eyebrow: de ? "Social Discovery" : "Social discovery",
+            title: de
+              ? "Menschen und Gruppen in deiner Nähe."
+              : "People and groups nearby.",
+            text: de
+              ? "Nicht Content konsumieren, sondern etwas unternehmen."
+              : "Less content consumption, more real-world activity.",
+            metric: de ? "In der Nähe" : "Nearby",
+            chips: de
+              ? ["Leute", "Gruppen", "Interessen"]
+              : ["People", "Groups", "Interests"],
+            action: de ? "Entdecken" : "Discover",
+            kind: "discover",
           },
           {
-            label: de
-              ? "Gruppen"
-              : "Groups",
+            label: de ? "Gruppen" : "Groups",
+            eyebrow: de ? "Gemeinsam statt allein" : "Together, not alone",
+            title: de
+              ? "Aus Interessen werden Gruppen."
+              : "Interests turn into groups.",
+            text: de
+              ? "Kleine Gruppen rund um gemeinsame Aktivitäten und echte Treffen."
+              : "Small groups built around shared activities and real meetings.",
+            metric: "4–8",
+            metricLabel: de
+              ? "Personen pro Gruppe"
+              : "people per group",
+            chips: de
+              ? ["Outdoor", "Kaffee", "Events"]
+              : ["Outdoor", "Coffee", "Events"],
+            action: de ? "Gruppe ansehen" : "View group",
+            kind: "groups",
           },
           {
-            label: de
-              ? "Pläne in der Nähe"
-              : "Nearby plans",
+            label: de ? "Pläne in der Nähe" : "Nearby plans",
+            eyebrow: de ? "Spontane Pläne" : "Spontaneous plans",
+            title: de
+              ? "Heute noch etwas machen."
+              : "Make plans for today.",
+            text: de
+              ? "Einfache Vorschläge für Aktivitäten, Orte und kleine Treffen."
+              : "Simple suggestions for activities, places and small meetups.",
+            metric: de ? "Heute" : "Today",
+            metricLabel: de
+              ? "statt irgendwann"
+              : "instead of someday",
+            chips: de
+              ? ["Spontan", "Lokal", "Gemeinsam"]
+              : ["Spontaneous", "Local", "Together"],
+            action: de ? "Plan ansehen" : "View plan",
+            kind: "plans",
           },
         ],
 

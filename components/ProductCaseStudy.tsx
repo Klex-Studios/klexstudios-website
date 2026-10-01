@@ -33,12 +33,39 @@ type TimelineItem = {
 type Preview = {
   label: string;
   src?: string;
+  image?: string;
+  eyebrow?: string;
+  title?: string;
+  text?: string;
+  metric?: string;
+  metricLabel?: string;
+  chips?: readonly string[];
+  action?: string;
+  kind?:
+    | "discover"
+    | "insight"
+    | "chat"
+    | "groups"
+    | "plans"
+    | "game"
+    | "round"
+    | "setup";
 };
 
 type ChangelogItem = {
   date: string;
   title: string;
   text: string;
+};
+
+type BuildSnapshot = {
+  kicker: string;
+  title: string;
+  lead: string;
+  current: string;
+  done: readonly string[];
+  next: readonly string[];
+  note?: string;
 };
 
 export type ProductCaseStudyConfig = {
@@ -64,6 +91,8 @@ export type ProductCaseStudyConfig = {
   version?: string;
   updated?: string;
   progress?: number;
+
+  snapshot?: BuildSnapshot;
 
   micro: readonly string[];
 
@@ -116,6 +145,10 @@ export default function ProductCaseStudy({
           version: "Version",
           updated: "Aktualisiert",
           progress: "Entwicklungsstand",
+          buildSnapshot: "Current Build",
+          alreadyIn: "Bereits drin",
+          nextUp: "Als Nächstes",
+          currentStage: "Aktuelle Phase",
 
           featuresKicker: "Core Features",
           featuresTitle: "Was das Produkt anders macht.",
@@ -123,8 +156,8 @@ export default function ProductCaseStudy({
           previewKicker: "Product Preview",
           previewTitle: "Ein Blick auf das Produkt.",
           previewLead:
-            "Echte App-Screens werden hier ergänzt, sobald sie öffentlich vorzeigbar sind.",
-          previewFallback: "UI Preview folgt",
+            "Ein konkreter Blick auf Produktlogik und UI-Richtung. Konzept-Screens können sich während der Entwicklung noch verändern.",
+          previewFallback: "Konzept-Screen",
 
           timelineLabel: "Roadmap",
 
@@ -150,6 +183,10 @@ export default function ProductCaseStudy({
           version: "Version",
           updated: "Updated",
           progress: "Development progress",
+          buildSnapshot: "Current Build",
+          alreadyIn: "Already in",
+          nextUp: "Next up",
+          currentStage: "Current stage",
 
           featuresKicker: "Core Features",
           featuresTitle: "What makes the product different.",
@@ -157,8 +194,8 @@ export default function ProductCaseStudy({
           previewKicker: "Product Preview",
           previewTitle: "A look at the product.",
           previewLead:
-            "Real app screens will be added once they are ready to be shown publicly.",
-          previewFallback: "UI preview coming soon",
+            "A concrete look at the product logic and UI direction. Concept screens may still change during development.",
+          previewFallback: "Concept screen",
 
           timelineLabel: "Roadmap",
 
@@ -345,6 +382,82 @@ export default function ProductCaseStudy({
                   } as CSSProperties
                 }
               />
+            </div>
+          </section>
+        )}
+
+        {config.snapshot && (
+          <section
+            className={`${styles.section} ${styles.snapshotSection}`}
+            aria-labelledby={`${config.key}-snapshot`}
+          >
+            <div
+              className={styles.snapshotIntro}
+              data-reveal="left"
+            >
+              <p className={styles.kicker}>
+                {config.snapshot.kicker || ui.buildSnapshot}
+              </p>
+
+              <h2 id={`${config.key}-snapshot`}>
+                {config.snapshot.title}
+              </h2>
+
+              <p className={styles.snapshotLead}>
+                {config.snapshot.lead}
+              </p>
+
+              <div className={styles.currentStageCard}>
+                <span>{ui.currentStage}</span>
+                <strong>{config.snapshot.current}</strong>
+              </div>
+
+              {config.snapshot.note && (
+                <p className={styles.snapshotNote}>
+                  {config.snapshot.note}
+                </p>
+              )}
+            </div>
+
+            <div className={styles.snapshotColumns}>
+              <article
+                className={styles.snapshotCard}
+                data-reveal="up"
+                data-tilt
+              >
+                <span className={styles.snapshotCardLabel}>
+                  {ui.alreadyIn}
+                </span>
+
+                <ul>
+                  {config.snapshot.done.map((item) => (
+                    <li key={item}>
+                      <span aria-hidden="true">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+
+              <article
+                className={styles.snapshotCard}
+                data-reveal="up"
+                data-reveal-delay="80"
+                data-tilt
+              >
+                <span className={styles.snapshotCardLabel}>
+                  {ui.nextUp}
+                </span>
+
+                <ul>
+                  {config.snapshot.next.map((item) => (
+                    <li key={item}>
+                      <span aria-hidden="true">→</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </article>
             </div>
           </section>
         )}
@@ -701,17 +814,11 @@ function PhonePreview({
               className={styles.screenImage}
             />
           ) : (
-            <div className={styles.previewPlaceholder}>
-              <Image
-                src={logo}
-                alt=""
-                width={68}
-                height={68}
-              />
-
-              <strong>{preview.label}</strong>
-              <span>{fallback}</span>
-            </div>
+            <ConceptPreview
+              preview={preview}
+              logo={logo}
+              fallback={fallback}
+            />
           )}
         </div>
       </div>
@@ -720,5 +827,123 @@ function PhonePreview({
         {preview.label}
       </figcaption>
     </figure>
+  );
+}
+
+function ConceptPreview({
+  preview,
+  logo,
+  fallback,
+}: {
+  preview: Preview;
+  logo: string;
+  fallback: string;
+}) {
+  const iconByKind: Record<NonNullable<Preview["kind"]>, string> = {
+    discover: "◇",
+    insight: "◎",
+    chat: "↗",
+    groups: "◌",
+    plans: "⌁",
+    game: "✦",
+    round: "↻",
+    setup: "＋",
+  };
+
+  const icon = preview.kind
+    ? iconByKind[preview.kind]
+    : "✦";
+
+  return (
+    <div className={styles.conceptScreen}>
+      <div className={styles.conceptTopbar}>
+        <div className={styles.conceptBrand}>
+          <Image
+            src={logo}
+            alt=""
+            width={24}
+            height={24}
+          />
+          <span>{preview.eyebrow ?? fallback}</span>
+        </div>
+
+        <span
+          className={styles.conceptStatusDot}
+          aria-hidden="true"
+        />
+      </div>
+
+      {preview.image ? (
+        <div className={styles.conceptPhoto}>
+          <Image
+            src={preview.image}
+            alt=""
+            fill
+            sizes="300px"
+            className={styles.conceptPhotoImage}
+          />
+
+          <div className={styles.conceptPhotoShade} />
+
+          <div className={styles.conceptPhotoCopy}>
+            <span>{preview.metric ?? preview.label}</span>
+            <strong>
+              {preview.title ?? preview.label}
+            </strong>
+
+            {preview.text && (
+              <p>{preview.text}</p>
+            )}
+          </div>
+        </div>
+      ) : (
+        <div className={styles.conceptPanel}>
+          <span className={styles.conceptIcon}>
+            {icon}
+          </span>
+
+          {preview.metric && (
+            <div className={styles.conceptMetric}>
+              <strong>{preview.metric}</strong>
+              {preview.metricLabel && (
+                <span>{preview.metricLabel}</span>
+              )}
+            </div>
+          )}
+
+          <h4>{preview.title ?? preview.label}</h4>
+
+          {preview.text && (
+            <p>{preview.text}</p>
+          )}
+
+          <div className={styles.conceptRows} aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </div>
+        </div>
+      )}
+
+      {preview.chips && preview.chips.length > 0 && (
+        <div className={styles.conceptChips}>
+          {preview.chips.slice(0, 4).map((chip) => (
+            <span key={chip}>{chip}</span>
+          ))}
+        </div>
+      )}
+
+      <div className={styles.conceptAction}>
+        <span>{preview.action ?? preview.label}</span>
+        <span aria-hidden="true">→</span>
+      </div>
+
+      <div className={styles.conceptNav} aria-hidden="true">
+        <span />
+        <span className={styles.conceptNavActive} />
+        <span />
+        <span />
+      </div>
+    </div>
   );
 }

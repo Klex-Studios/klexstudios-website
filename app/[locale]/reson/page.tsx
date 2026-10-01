@@ -7,7 +7,6 @@ import {
   isLocale,
   type Locale,
 } from "@/lib/i18n";
-import { pageMetadata } from "@/lib/metadata";
 
 type Props = {
   params: Promise<{
@@ -31,8 +30,19 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata> {
   const locale = await getLocale(params);
+  const t = getDictionary(locale).reson;
 
-  return pageMetadata(locale, "reson");
+  return {
+    title: "Reson | Klex Studios",
+    description: t.lead,
+    alternates: {
+      canonical: `/${locale}/reson`,
+      languages: {
+        de: "/de/reson",
+        en: "/en/reson",
+      },
+    },
+  };
 }
 
 export default async function ResonPage({
@@ -63,7 +73,9 @@ export default async function ResonPage({
             {t.titleB}
             <br />
             {t.titleC}{" "}
-            <span>{t.titleAccent}</span>
+            <span>
+              {t.titleAccent}
+            </span>
           </>
         ),
 
@@ -73,14 +85,53 @@ export default async function ResonPage({
         secondaryLabel: t.secondary,
 
         status: t.placeholderStatus,
-        build: de ? "Prototyp" : "Prototype",
+        build: de
+          ? "Prototyp"
+          : "Prototype",
         platform: "Mobile",
 
         version: de
           ? "MVP in Entwicklung"
           : "MVP in development",
-
         updated: "02.10.2026",
+
+        snapshot: {
+          kicker: "Current Build",
+          title: de
+            ? "Was gerade wirklich gebaut wird."
+            : "What is actually being built right now.",
+          lead: de
+            ? "Reson ist nicht nur eine Idee auf einer Landingpage. Der aktuelle Fokus liegt auf Anforderungen, Architektur und dem Übergang in den ersten testbaren MVP."
+            : "Reson is not just an idea on a landing page. The current focus is requirements, architecture and the transition into the first testable MVP.",
+          current: de
+            ? "Anforderungen & Architektur"
+            : "Requirements & architecture",
+          done: de
+            ? [
+                "Kernproblem und Produktthese definiert",
+                "MVP-Scope und zentrale Dating-Flows festgelegt",
+                "Technischer Stack für den Prototyp ausgewählt",
+              ]
+            : [
+                "Core problem and product thesis defined",
+                "MVP scope and core dating flows defined",
+                "Technical stack selected for the prototype",
+              ],
+          next: de
+            ? [
+                "Onboarding & Profile",
+                "Daily Stack und Matching",
+                "Likes, Skips und erster Usability-Test",
+              ]
+            : [
+                "Onboarding & profiles",
+                "Daily Stack and matching",
+                "Likes, skips and first usability test",
+              ],
+          note: de
+            ? "Die Screens unten zeigen die aktuelle Produkt- und UI-Richtung, nicht bereits veröffentlichte App-Screens."
+            : "The screens below show the current product and UI direction, not already released app screens.",
+        },
 
         micro: t.micro,
 
@@ -122,14 +173,58 @@ export default async function ResonPage({
         previews: [
           {
             label: "Daily Stack",
+            image: "/images/home/reson-date-v2.webp",
+            eyebrow: "Daily Stack",
+            title: de
+              ? "Weniger Auswahl. Bessere Entscheidungen."
+              : "Less choice. Better decisions.",
+            text: de
+              ? "Ein begrenzter Stack statt endlosem Swipen."
+              : "A limited stack instead of endless swiping.",
+            metric: de ? "Heute" : "Today",
+            chips: de
+              ? ["Werte", "Interessen", "Nähe"]
+              : ["Values", "Interests", "Distance"],
+            action: de ? "Profil ansehen" : "View profile",
+            kind: "discover",
           },
           {
-            label: de
-              ? "Kompatibilität"
-              : "Compatibility",
+            label: de ? "Kompatibilität" : "Compatibility",
+            eyebrow: de ? "Matching Logic" : "Matching logic",
+            title: de
+              ? "Mehr Kontext vor dem Match."
+              : "More context before the match.",
+            text: de
+              ? "Gemeinsame Werte und Signale werden sichtbar, ohne Menschen auf einen Score zu reduzieren."
+              : "Shared values and signals become visible without reducing people to a score.",
+            metric: "3",
+            metricLabel: de
+              ? "starke Überschneidungen"
+              : "strong overlaps",
+            chips: de
+              ? ["Werte", "Lifestyle", "Kommunikation"]
+              : ["Values", "Lifestyle", "Communication"],
+            action: de ? "Insights öffnen" : "Open insights",
+            kind: "insight",
           },
           {
             label: "Match & Chat",
+            eyebrow: de ? "Nach dem Match" : "After the match",
+            title: de
+              ? "Vom Match ins echte Gespräch."
+              : "From match to real conversation.",
+            text: de
+              ? "Klare, ruhige Chat-Flows mit Fokus auf echte Interaktion."
+              : "Clear, calm chat flows focused on real interaction.",
+            metric: "1:1",
+            metricLabel: de
+              ? "direkte Verbindung"
+              : "direct connection",
+            chips: de
+              ? ["Chat", "Privacy", "Safety"]
+              : ["Chat", "Privacy", "Safety"],
+            action: de ? "Chat öffnen" : "Open chat",
+            kind: "chat",
           },
         ],
 

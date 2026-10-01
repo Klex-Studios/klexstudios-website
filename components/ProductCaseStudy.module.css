@@ -4402,3 +4402,517 @@
   }
 
 }
+
+/* =========================================================
+   CURRENT BUILD SNAPSHOT
+========================================================= */
+
+.snapshotSection {
+  display: grid;
+  grid-template-columns:
+    minmax(340px, 0.82fr)
+    minmax(520px, 1.18fr);
+  gap: clamp(56px, 8vw, 126px);
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.065);
+}
+
+.snapshotIntro {
+  align-self: start;
+}
+
+.snapshotLead {
+  max-width: 580px;
+  margin: 26px 0 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+.currentStageCard {
+  position: relative;
+  overflow: hidden;
+  margin-top: 32px;
+  padding: 24px 26px;
+  border:
+    1px solid
+    rgba(var(--product-accent-rgb), 0.22);
+  border-radius: 18px;
+  background:
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(var(--product-accent-rgb), 0.15),
+      transparent 55%
+    ),
+    rgba(255, 255, 255, 0.025);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 22px 65px rgba(0, 0, 0, 0.18);
+}
+
+.currentStageCard::after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--product-accent);
+  box-shadow:
+    0 0 0 6px
+    rgba(var(--product-accent-rgb), 0.07),
+    0 0 18px
+    rgba(var(--product-accent-rgb), 0.38);
+}
+
+.currentStageCard span,
+.snapshotCardLabel {
+  display: block;
+  color: rgba(255, 255, 255, 0.36);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.currentStageCard strong {
+  display: block;
+  max-width: 420px;
+  margin-top: 9px;
+  color: #fff;
+  font-size: 1.12rem;
+  font-weight: 680;
+  line-height: 1.4;
+}
+
+.snapshotNote {
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.33);
+  font-size: 0.76rem;
+  line-height: 1.6;
+}
+
+.snapshotColumns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  align-content: start;
+}
+
+.snapshotCard {
+  position: relative;
+  min-height: 310px;
+  padding: 28px;
+  overflow: hidden;
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(var(--product-accent-rgb), 0.04),
+      rgba(255, 255, 255, 0.018)
+    );
+}
+
+.snapshotCard::after {
+  content: "";
+  position: absolute;
+  inset: auto -60px -80px auto;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background:
+    rgba(var(--product-accent-rgb), 0.07);
+  filter: blur(45px);
+  pointer-events: none;
+}
+
+.snapshotCard ul {
+  display: grid;
+  gap: 18px;
+  padding: 0;
+  margin: 36px 0 0;
+  list-style: none;
+}
+
+.snapshotCard li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: start;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.69);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.snapshotCard li > span {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border:
+    1px solid
+    rgba(var(--product-accent-rgb), 0.22);
+  border-radius: 9px;
+  color: var(--product-accent);
+  background:
+    rgba(var(--product-accent-rgb), 0.06);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   CONCEPT PHONE SCREENS
+========================================================= */
+
+.conceptScreen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 48px 14px 14px;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 50% 16%,
+      rgba(var(--product-accent-rgb), 0.16),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #0d0f14 0%,
+      #08090d 100%
+    );
+}
+
+.conceptScreen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.03),
+      transparent 24%,
+      transparent 70%,
+      rgba(var(--product-accent-rgb), 0.035)
+    );
+}
+
+.conceptTopbar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 28px;
+}
+
+.conceptBrand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.conceptBrand img {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+  border-radius: 7px;
+}
+
+.conceptBrand span {
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.61rem;
+  font-weight: 700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.conceptStatusDot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--product-accent);
+  box-shadow:
+    0 0 12px
+    rgba(var(--product-accent-rgb), 0.65);
+}
+
+.conceptPhoto {
+  position: relative;
+  z-index: 1;
+  min-height: 56%;
+  margin-top: 12px;
+  overflow: hidden;
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.1);
+  border-radius: 22px;
+  background: #111;
+}
+
+.conceptPhotoImage {
+  object-fit: cover;
+}
+
+.conceptPhotoShade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.02) 22%,
+      rgba(0, 0, 0, 0.22) 50%,
+      rgba(5, 6, 9, 0.94) 100%
+    );
+}
+
+.conceptPhotoCopy {
+  position: absolute;
+  z-index: 2;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+}
+
+.conceptPhotoCopy > span {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 7px;
+  padding: 4px 7px;
+  border:
+    1px solid
+    rgba(var(--product-accent-rgb), 0.28);
+  border-radius: 999px;
+  color: var(--product-accent);
+  background:
+    rgba(3, 5, 8, 0.68);
+  backdrop-filter: blur(10px);
+  font-size: 0.52rem;
+  font-weight: 700;
+}
+
+.conceptPhotoCopy strong {
+  display: block;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+.conceptPhotoCopy p {
+  margin: 7px 0 0;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.58rem;
+  line-height: 1.5;
+}
+
+.conceptPanel {
+  position: relative;
+  z-index: 1;
+  min-height: 55%;
+  margin-top: 12px;
+  padding: 18px 16px;
+  overflow: hidden;
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.085);
+  border-radius: 22px;
+  background:
+    radial-gradient(
+      circle at 85% 5%,
+      rgba(var(--product-accent-rgb), 0.17),
+      transparent 42%
+    ),
+    rgba(255, 255, 255, 0.025);
+}
+
+.conceptIcon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border:
+    1px solid
+    rgba(var(--product-accent-rgb), 0.24);
+  border-radius: 11px;
+  color: var(--product-accent);
+  background:
+    rgba(var(--product-accent-rgb), 0.06);
+  font-size: 1rem;
+}
+
+.conceptMetric {
+  margin-top: 22px;
+}
+
+.conceptMetric strong {
+  display: block;
+  color: #fff;
+  font-size: 1.8rem;
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.conceptMetric span {
+  display: block;
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.36);
+  font-size: 0.53rem;
+}
+
+.conceptPanel h4 {
+  margin: 18px 0 0;
+  color: #fff;
+  font-size: 0.9rem;
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+}
+
+.conceptPanel p {
+  margin: 7px 0 0;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.58rem;
+  line-height: 1.5;
+}
+
+.conceptRows {
+  display: grid;
+  gap: 7px;
+  margin-top: 16px;
+}
+
+.conceptRows span {
+  display: block;
+  height: 10px;
+  border-radius: 8px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(var(--product-accent-rgb), 0.16),
+      rgba(255, 255, 255, 0.035)
+    );
+}
+
+.conceptRows span:nth-child(2) {
+  width: 78%;
+}
+
+.conceptRows span:nth-child(3) {
+  width: 58%;
+}
+
+.conceptChips {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.conceptChips span {
+  padding: 5px 7px;
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.55);
+  background:
+    rgba(255, 255, 255, 0.025);
+  font-size: 0.48rem;
+}
+
+.conceptAction {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 36px;
+  margin-top: auto;
+  padding: 0 11px;
+  border:
+    1px solid
+    rgba(var(--product-accent-rgb), 0.24);
+  border-radius: 12px;
+  color: #fff;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(var(--product-accent-rgb), 0.2),
+      rgba(var(--product-accent-rgb), 0.08)
+    );
+  font-size: 0.54rem;
+  font-weight: 700;
+}
+
+.conceptNav {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 8px;
+  padding: 12px 8px 2px;
+}
+
+.conceptNav span {
+  width: 16px;
+  height: 3px;
+  border-radius: 999px;
+  background:
+    rgba(255, 255, 255, 0.15);
+}
+
+.conceptNav .conceptNavActive {
+  width: 22px;
+  background: var(--product-accent);
+  box-shadow:
+    0 0 10px
+    rgba(var(--product-accent-rgb), 0.4);
+}
+
+@media (max-width: 1100px) {
+  .snapshotSection {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .snapshotIntro {
+    max-width: 760px;
+  }
+}
+
+@media (max-width: 760px) {
+  .snapshotColumns {
+    grid-template-columns: 1fr;
+  }
+
+  .snapshotCard {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .currentStageCard {
+    padding: 21px;
+  }
+
+  .snapshotCard {
+    padding: 23px 21px;
+  }
+}

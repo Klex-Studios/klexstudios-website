@@ -92,6 +92,44 @@ export default async function ElixaPage({
           : "Advanced prototype",
         updated: "02.10.2026",
 
+        snapshot: {
+          kicker: "Current Build",
+          title: de
+            ? "Der Prototyp steht. Jetzt zählt der Feinschliff."
+            : "The prototype exists. Now refinement matters.",
+          lead: de
+            ? "Elixa ist aktuell das am weitesten entwickelte Klex-Studios-Produkt. Die Kernmechanik steht; gearbeitet wird vor allem an Content, Balancing und dem Nutzererlebnis."
+            : "Elixa is currently the most advanced Klex Studios product. The core mechanics are in place; current work focuses on content, balancing and the user experience.",
+          current: de
+            ? "Content & Feinschliff"
+            : "Content & refinement",
+          done: de
+            ? [
+                "Produktidee und Spielprinzip umgesetzt",
+                "Core-Prototyp der Mobile-App",
+                "Grundlegende Spiel- und Rundenlogik",
+              ]
+            : [
+                "Product idea and game concept implemented",
+                "Core mobile app prototype",
+                "Core game and round logic",
+              ],
+          next: de
+            ? [
+                "Mehr Inhalte und bessere Balance",
+                "UI und Spielfluss weiter polieren",
+                "Öffentliche Produktvisuals und Release-Vorbereitung",
+              ]
+            : [
+                "More content and better balancing",
+                "Further polish UI and gameplay flow",
+                "Public product visuals and release preparation",
+              ],
+          note: de
+            ? "Die Preview verbindet vorhandene Produktlogik mit einer verfeinerten visuellen Richtung."
+            : "The preview combines existing product logic with a more refined visual direction.",
+        },
+
         micro: t.micro,
 
         features: t.features,
@@ -121,19 +159,59 @@ export default async function ElixaPage({
 
         previews: [
           {
-            label: de
-              ? "Spielauswahl"
-              : "Game selection",
+            label: de ? "Spielauswahl" : "Game selection",
+            image: "/images/home/elixa-game-night-v2.webp",
+            eyebrow: "Elixa",
+            title: de
+              ? "In Sekunden ins Spiel."
+              : "Into the game in seconds.",
+            text: de
+              ? "Spielmodus wählen, Gruppe starten und direkt loslegen."
+              : "Choose a mode, start the group and begin immediately.",
+            metric: de ? "Sofort" : "Instant",
+            chips: de
+              ? ["Wahrheit", "Challenge", "Mix"]
+              : ["Truth", "Challenge", "Mix"],
+            action: de ? "Spiel starten" : "Start game",
+            kind: "game",
           },
           {
-            label: de
-              ? "Spielrunde"
-              : "Game round",
+            label: de ? "Spielrunde" : "Game round",
+            eyebrow: de ? "Live im Spiel" : "Live game",
+            title: de
+              ? "Eine Karte. Eine klare Aktion."
+              : "One card. One clear action.",
+            text: de
+              ? "Fragen und Challenges ohne unnötige Menüs oder Unterbrechungen."
+              : "Questions and challenges without unnecessary menus or interruptions.",
+            metric: "3 / 10",
+            metricLabel: de
+              ? "Runde"
+              : "round",
+            chips: de
+              ? ["Frage", "Challenge", "Weiter"]
+              : ["Question", "Challenge", "Next"],
+            action: de ? "Nächste Karte" : "Next card",
+            kind: "round",
           },
           {
-            label: de
-              ? "Gruppenmodus"
-              : "Group mode",
+            label: de ? "Gruppenmodus" : "Group mode",
+            eyebrow: de ? "Für jede Runde" : "For every group",
+            title: de
+              ? "Die Gruppe bestimmt die Stimmung."
+              : "The group sets the mood.",
+            text: de
+              ? "Spieler, Intensität und Modus lassen sich schnell anpassen."
+              : "Players, intensity and mode can be adjusted quickly.",
+            metric: "2–12",
+            metricLabel: de
+              ? "Spieler"
+              : "players",
+            chips: de
+              ? ["Locker", "Mutig", "Chaos"]
+              : ["Chill", "Bold", "Chaos"],
+            action: de ? "Gruppe bearbeiten" : "Edit group",
+            kind: "setup",
           },
         ],
 
