@@ -4916,3 +4916,970 @@
     padding: 23px 21px;
   }
 }
+
+/* =========================================================
+   REAL PRODUCT MEDIA / ELIXA STORE SHOWCASE
+========================================================= */
+
+.heroMediaFrame {
+  position: relative;
+  width: min(100%, 820px);
+  aspect-ratio: 1794 / 876;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 30px;
+  background: #050706;
+  box-shadow:
+    0 36px 110px rgba(0, 0, 0, 0.58),
+    0 0 90px rgba(var(--product-accent-rgb), 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  isolation: isolate;
+}
+
+.heroMediaFrame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.035);
+}
+
+.heroMediaImage {
+  object-fit: cover;
+}
+
+.heroMediaShade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, transparent 52%, rgba(0, 0, 0, 0.3) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.08), transparent 42%);
+}
+
+.heroMediaBadge {
+  position: absolute;
+  left: 22px;
+  bottom: 20px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 38px;
+  padding: 0 15px;
+  border: 1px solid rgba(var(--product-accent-rgb), 0.38);
+  border-radius: 999px;
+  background: rgba(3, 14, 8, 0.78);
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(14px);
+}
+
+.heroMediaBadge i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--product-accent);
+  box-shadow: 0 0 14px rgba(var(--product-accent-rgb), 0.72);
+}
+
+.showcaseHero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1794 / 876;
+  margin: 0 0 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.085);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.36),
+    0 0 70px rgba(var(--product-accent-rgb), 0.055);
+}
+
+.showcaseHeroImage,
+.showcaseCardImage {
+  object-fit: cover;
+}
+
+.showcaseHero figcaption {
+  position: absolute;
+  left: 18px;
+  bottom: 16px;
+  z-index: 2;
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(3, 6, 5, 0.72);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.72rem;
+  font-weight: 650;
+  backdrop-filter: blur(12px);
+}
+
+.showcaseGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.showcaseCard {
+  min-width: 0;
+  margin: 0;
+  padding: 10px 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 24px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.26);
+  transition:
+    transform 260ms ease,
+    border-color 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.showcaseCardMedia {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 941 / 1672;
+  overflow: hidden;
+  border-radius: 17px;
+  background: #030504;
+}
+
+.showcaseCard figcaption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 6px 2px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.76rem;
+  font-weight: 650;
+}
+
+.showcaseCard figcaption span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--product-accent);
+  box-shadow: 0 0 11px rgba(var(--product-accent-rgb), 0.6);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .showcaseCard:hover {
+    transform: translateY(-5px);
+    border-color: rgba(var(--product-accent-rgb), 0.22);
+    box-shadow:
+      0 30px 76px rgba(0, 0, 0, 0.34),
+      0 0 48px rgba(var(--product-accent-rgb), 0.055);
+  }
+}
+
+@media (max-width: 1100px) {
+  .heroMediaFrame {
+    width: min(100%, 980px);
+  }
+}
+
+@media (max-width: 760px) {
+  .heroVisual:has(.heroMediaFrame) {
+    min-height: auto;
+  }
+
+  .heroMediaFrame,
+  .showcaseHero {
+    border-radius: 22px;
+  }
+
+  .heroMediaBadge {
+    left: 14px;
+    bottom: 13px;
+    min-height: 34px;
+    padding: 0 12px;
+    font-size: 0.66rem;
+  }
+
+  .showcaseGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .showcaseCard {
+    padding: 7px 7px 10px;
+    border-radius: 19px;
+  }
+
+  .showcaseCardMedia {
+    border-radius: 13px;
+  }
+}
+
+@media (max-width: 520px) {
+  .showcaseHero {
+    margin-bottom: 14px;
+  }
+
+  .showcaseHero figcaption {
+    display: none;
+  }
+
+  .showcaseGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .showcaseCard {
+    width: min(100%, 430px);
+    margin-inline: auto;
+  }
+}
+
+
+/* =========================================================
+   ELIXA — REAL SCREEN PHONE PRESENTATION
+   Uses the actual app screenshots inside the existing
+   animated phone system. No generated UI is used here.
+========================================================= */
+
+.page[data-product="elixa"] {
+  background:
+    radial-gradient(circle at 78% 8%, rgba(56, 240, 111, 0.18), transparent 29rem),
+    radial-gradient(circle at 94% 35%, rgba(162, 82, 255, 0.09), transparent 34rem),
+    radial-gradient(circle at 12% 58%, rgba(26, 116, 82, 0.08), transparent 32rem),
+    radial-gradient(circle at 50% 102%, rgba(56, 240, 111, 0.055), transparent 38rem),
+    linear-gradient(180deg, #040506 0%, #07090a 42%, #050607 100%);
+}
+
+.page[data-product="elixa"] .heroVisual {
+  perspective: 1400px;
+}
+
+.page[data-product="elixa"] .heroVisual::before {
+  content: "";
+  position: absolute;
+  inset: 12% 4% 8%;
+  z-index: -2;
+  border-radius: 48%;
+  background:
+    radial-gradient(circle at 46% 58%, rgba(56, 240, 111, 0.18), transparent 40%),
+    radial-gradient(circle at 76% 40%, rgba(162, 82, 255, 0.09), transparent 35%);
+  filter: blur(40px);
+  opacity: 0.92;
+  pointer-events: none;
+}
+
+.page[data-product="elixa"] .heroVisual::after {
+  content: "";
+  position: absolute;
+  left: 11%;
+  right: 11%;
+  bottom: 6%;
+  z-index: -1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(56, 240, 111, 0.24) 38%,
+    rgba(168, 93, 255, 0.15) 68%,
+    transparent
+  );
+  box-shadow: 0 -18px 70px rgba(56, 240, 111, 0.12);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.page[data-product="elixa"] .heroVisual .phoneWrap {
+  width: clamp(168px, 15vw, 238px);
+}
+
+.phoneRealScreen {
+  aspect-ratio: 482 / 1166;
+  padding: 6px;
+  border-color: rgba(255, 255, 255, 0.22);
+  border-radius: 42px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.24),
+      rgba(28, 34, 34, 0.92) 24%,
+      rgba(4, 8, 7, 0.98) 72%,
+      rgba(132, 76, 174, 0.14)
+    );
+  box-shadow:
+    0 42px 110px rgba(0, 0, 0, 0.62),
+    -8px 0 34px rgba(var(--product-accent-rgb), 0.075),
+    8px 0 34px rgba(155, 79, 255, 0.055),
+    inset 0 1px 0 rgba(255, 255, 255, 0.26);
+  animation: elixaPhoneFloat 7s ease-in-out infinite;
+}
+
+.phone1 .phoneRealScreen {
+  animation-delay: -1.5s;
+}
+
+.phone2 .phoneRealScreen {
+  animation-delay: -3.8s;
+}
+
+.phone3 .phoneRealScreen {
+  animation-delay: -5.4s;
+}
+
+.phoneRealScreen .dynamicIsland {
+  display: none;
+}
+
+.phoneRealScreen .phoneScreen {
+  border-radius: 36px;
+  background: #020403;
+}
+
+.phoneRealScreen .screenImage {
+  object-fit: cover;
+  transform: none;
+  filter: none;
+}
+
+.phoneRealScreen::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  z-index: 11;
+  pointer-events: none;
+  border-radius: 36px;
+  background:
+    linear-gradient(
+      118deg,
+      rgba(255, 255, 255, 0.07) 0%,
+      rgba(255, 255, 255, 0.018) 16%,
+      transparent 34%,
+      transparent 74%,
+      rgba(var(--product-accent-rgb), 0.018) 100%
+    );
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.045),
+    inset 0 -22px 50px rgba(0, 0, 0, 0.08);
+}
+
+.page[data-product="elixa"] .previewStage {
+  min-height: 720px;
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.page[data-product="elixa"] .previewStage::before {
+  content: none;
+}
+
+.page[data-product="elixa"] .previewStage .phoneWrap {
+  z-index: 2;
+  width: min(25%, 250px);
+  flex-basis: 250px;
+}
+
+.page[data-product="elixa"] .previewStage .phone2 {
+  z-index: 4;
+}
+
+.page[data-product="elixa"] .previewGlow {
+  width: 76%;
+  height: 520px;
+  bottom: -210px;
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(var(--product-accent-rgb), 0.25),
+      rgba(var(--product-accent-rgb), 0.06) 42%,
+      transparent 70%
+    );
+  filter: blur(48px);
+}
+
+.page[data-product="elixa"] .previewStage[data-count="2"] {
+  gap: clamp(24px, 6vw, 120px);
+}
+
+.page[data-product="elixa"] .previewStage[data-count="2"] .phoneWrap {
+  width: min(30%, 300px);
+  flex-basis: 300px;
+}
+
+.page[data-product="elixa"] .previewStage[data-count="2"] .phone1 {
+  transform: translateY(28px) rotate(-6deg);
+}
+
+.page[data-product="elixa"] .previewStage[data-count="2"] .phone2 {
+  transform: translateY(-10px) scale(1.06) rotate(3deg);
+}
+
+.page[data-product="elixa"] .previewStage[data-count="2"]:hover .phone1 {
+  transform: translateY(18px) rotate(-8deg);
+}
+
+.page[data-product="elixa"] .previewStage[data-count="2"]:hover .phone2 {
+  transform: translateY(-20px) scale(1.08) rotate(4deg);
+}
+
+@keyframes elixaPhoneFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -7px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .page[data-product="elixa"] .heroVisual .phoneWrap {
+    width: min(43vw, 220px);
+  }
+
+  .page[data-product="elixa"] .previewStage {
+    min-height: 680px;
+  }
+}
+
+@media (max-width: 760px) {
+  .page[data-product="elixa"] .heroVisual {
+    min-height: 540px;
+  }
+
+  .page[data-product="elixa"] .heroVisual .phoneWrap {
+    width: min(42vw, 190px);
+  }
+
+  .page[data-product="elixa"] .previewStage {
+    min-height: 500px;
+    padding-top: 50px;
+    background:
+      radial-gradient(ellipse at 50% 112%, rgba(56, 240, 111, 0.16), transparent 55%),
+      radial-gradient(circle at 90% 12%, rgba(162, 82, 255, 0.05), transparent 34%),
+      linear-gradient(145deg, rgba(255, 255, 255, 0.026), rgba(255, 255, 255, 0.007));
+  }
+
+  .page[data-product="elixa"] .previewStage .phoneWrap {
+    width: 30%;
+    flex-basis: auto;
+  }
+
+  .phoneRealScreen {
+    padding: 4px;
+    border-radius: 31px;
+  }
+
+  .phoneRealScreen .phoneScreen,
+  .phoneRealScreen::after {
+    border-radius: 26px;
+  }
+
+  .phoneRealScreen::after {
+    inset: 4px;
+  }
+}
+
+@media (max-width: 520px) {
+  .page[data-product="elixa"] .heroVisual {
+    min-height: 455px;
+  }
+
+  .page[data-product="elixa"] .heroVisual .phoneWrap {
+    width: min(46vw, 170px);
+  }
+
+  .page[data-product="elixa"] .previewStage {
+    min-height: 470px;
+  }
+
+  .page[data-product="elixa"] .previewStage .phoneWrap {
+    width: 42%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phoneRealScreen {
+    animation: none !important;
+  }
+}
+
+
+@media (max-width: 760px) {
+  .page[data-product="elixa"] .previewStage[data-count="2"] .phoneWrap {
+    width: 38%;
+    flex-basis: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .page[data-product="elixa"] .previewStage[data-count="2"] .phoneWrap {
+    width: 44%;
+  }
+}
+
+
+/* =========================================================
+   ELIXA V3 — CLEANER PHONE COMPOSITIONS
+   Desktop keeps the 3-phone showcase. Mobile switches to a
+   deliberate product composition instead of cramming phones.
+========================================================= */
+
+.page[data-product="elixa"] .heroVisual {
+  min-height: 680px;
+}
+
+.page[data-product="elixa"] .heroVisual .phoneWrap {
+  width: clamp(220px, 18vw, 292px);
+}
+
+.page[data-product="elixa"] .heroVisual .phone1 {
+  z-index: 2;
+  transform: translateX(-64%) translateY(54px) rotate(-8deg) scale(0.92);
+  filter: brightness(0.82) saturate(0.9);
+}
+
+.page[data-product="elixa"] .heroVisual .phone2 {
+  z-index: 5;
+  transform: translateY(-26px) scale(1.08);
+  filter: brightness(1.02) saturate(1.02);
+}
+
+.page[data-product="elixa"] .heroVisual .phone3 {
+  z-index: 3;
+  transform: translateX(64%) translateY(54px) rotate(8deg) scale(0.92);
+  filter: brightness(0.86) saturate(0.92);
+}
+
+.page[data-product="elixa"] .heroVisual:hover .phone1 {
+  transform: translateX(-69%) translateY(42px) rotate(-10deg) scale(0.93);
+}
+
+.page[data-product="elixa"] .heroVisual:hover .phone2 {
+  transform: translateY(-40px) scale(1.1);
+}
+
+.page[data-product="elixa"] .heroVisual:hover .phone3 {
+  transform: translateX(69%) translateY(42px) rotate(10deg) scale(0.93);
+}
+
+.page[data-product="elixa"] .heroVisual .phoneWrap figcaption,
+.page[data-product="elixa"] .previewStage .phoneWrap figcaption {
+  margin-top: 12px;
+  color: rgba(255,255,255,0.34);
+  font-size: 0.66rem;
+}
+
+.page[data-product="elixa"] .phoneRealScreen {
+  border-radius: 46px;
+  padding: 5px;
+  box-shadow:
+    0 42px 110px rgba(0,0,0,0.68),
+    -12px 0 42px rgba(56,240,111,0.085),
+    12px 0 42px rgba(150,76,255,0.075),
+    inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+.page[data-product="elixa"] .phoneRealScreen .phoneScreen {
+  border-radius: 40px;
+}
+
+.page[data-product="elixa"] .phoneRealScreen::after {
+  inset: 5px;
+  border-radius: 40px;
+  background:
+    linear-gradient(112deg, rgba(255,255,255,0.055), transparent 20%, transparent 74%, rgba(56,240,111,0.018));
+}
+
+/* Product preview: open stage, no card/container feeling. */
+.page[data-product="elixa"] .previewSection {
+  overflow: visible;
+}
+
+.page[data-product="elixa"] .previewStage {
+  min-height: 760px;
+  padding: 80px 0 26px;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.page[data-product="elixa"] .previewStage::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 26px;
+  width: min(88%, 1040px);
+  height: 310px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(56,240,111,0.16), rgba(56,240,111,0.035) 44%, transparent 73%);
+  filter: blur(26px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page[data-product="elixa"] .previewGlow {
+  display: none;
+}
+
+.page[data-product="elixa"] .previewStage[data-count="2"] {
+  gap: clamp(70px, 10vw, 170px);
+}
+
+.page[data-product="elixa"] .previewStage[data-count="2"] .phoneWrap {
+  width: clamp(260px, 23vw, 330px);
+  flex: 0 0 auto;
+}
+
+.page[data-product="elixa"] .previewStage[data-count="2"] .phone1 {
+  z-index: 2;
+  transform: translateY(44px) rotate(-5deg);
+}
+
+.page[data-product="elixa"] .previewStage[data-count="2"] .phone2 {
+  z-index: 3;
+  transform: translateY(-18px) rotate(4deg) scale(1.035);
+}
+
+.page[data-product="elixa"] .previewStage[data-count="2"]:hover .phone1 {
+  transform: translateY(26px) rotate(-7deg);
+}
+
+.page[data-product="elixa"] .previewStage[data-count="2"]:hover .phone2 {
+  transform: translateY(-34px) rotate(6deg) scale(1.05);
+}
+
+/* Tablet: keep phones large enough to read. */
+@media (max-width: 1100px) {
+  .page[data-product="elixa"] .heroVisual {
+    min-height: 650px;
+  }
+
+  .page[data-product="elixa"] .heroVisual .phoneWrap {
+    width: min(28vw, 255px);
+  }
+
+  .page[data-product="elixa"] .previewStage[data-count="2"] .phoneWrap {
+    width: min(34vw, 300px);
+  }
+}
+
+/* Mobile hero: one clear main phone, side phones as tasteful depth. */
+@media (max-width: 760px) {
+  .page[data-product="elixa"] .heroVisual {
+    min-height: 610px;
+    margin-inline: -14px;
+    overflow: hidden;
+  }
+
+  .page[data-product="elixa"] .heroVisual .phoneWrap {
+    width: min(64vw, 292px);
+  }
+
+  .page[data-product="elixa"] .heroVisual .phone1 {
+    left: 50%;
+    z-index: 1;
+    transform: translateX(-78%) translateY(84px) rotate(-8deg) scale(0.72);
+    opacity: 0.72;
+    filter: brightness(0.66) saturate(0.75);
+  }
+
+  .page[data-product="elixa"] .heroVisual .phone2 {
+    left: 50%;
+    z-index: 5;
+    transform: translateX(-50%) translateY(-8px) scale(1);
+    opacity: 1;
+  }
+
+  .page[data-product="elixa"] .heroVisual .phone3 {
+    left: 50%;
+    z-index: 2;
+    transform: translateX(-22%) translateY(84px) rotate(8deg) scale(0.72);
+    opacity: 0.72;
+    filter: brightness(0.68) saturate(0.78);
+  }
+
+  .page[data-product="elixa"] .heroVisual:hover .phone1 {
+    transform: translateX(-78%) translateY(84px) rotate(-8deg) scale(0.72);
+  }
+
+  .page[data-product="elixa"] .heroVisual:hover .phone2 {
+    transform: translateX(-50%) translateY(-8px) scale(1);
+  }
+
+  .page[data-product="elixa"] .heroVisual:hover .phone3 {
+    transform: translateX(-22%) translateY(84px) rotate(8deg) scale(0.72);
+  }
+
+  .page[data-product="elixa"] .heroVisual .phoneWrap figcaption {
+    display: none;
+  }
+
+  /* Lower preview becomes a clean horizontal snap gallery on mobile. */
+  .page[data-product="elixa"] .previewStage[data-count="2"] {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 78vw;
+    justify-content: start;
+    align-items: center;
+    gap: 22px;
+    min-height: auto;
+    padding: 34px 8vw 42px;
+    margin-inline: calc(50% - 50vw);
+    width: 100vw;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+
+  .page[data-product="elixa"] .previewStage[data-count="2"]::-webkit-scrollbar {
+    display: none;
+  }
+
+  .page[data-product="elixa"] .previewStage[data-count="2"]::before {
+    content: none;
+  }
+
+  .page[data-product="elixa"] .previewStage[data-count="2"] .phoneWrap {
+    width: min(72vw, 310px);
+    justify-self: center;
+    flex: none;
+    scroll-snap-align: center;
+    transform: none !important;
+  }
+
+  .page[data-product="elixa"] .previewStage[data-count="2"] .phoneWrap figcaption {
+    display: block;
+    margin-top: 14px;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.42);
+  }
+
+  .page[data-product="elixa"] .phoneRealScreen {
+    border-radius: 38px;
+  }
+
+  .page[data-product="elixa"] .phoneRealScreen .phoneScreen,
+  .page[data-product="elixa"] .phoneRealScreen::after {
+    border-radius: 33px;
+  }
+}
+
+@media (max-width: 520px) {
+  .page[data-product="elixa"] .heroVisual {
+    min-height: 560px;
+  }
+
+  .page[data-product="elixa"] .heroVisual .phoneWrap {
+    width: min(68vw, 280px);
+  }
+
+  .page[data-product="elixa"] .previewStage[data-count="2"] {
+    grid-auto-columns: 86vw;
+    padding-inline: 7vw;
+  }
+
+  .page[data-product="elixa"] .previewStage[data-count="2"] .phoneWrap {
+    width: min(78vw, 300px);
+  }
+}
+
+/* =========================================================
+   ELIXA V4 — SMALL PHONE RESPONSIVE FIX
+   Keep the desktop/tablet composition, but simplify aggressively
+   on narrow phones so the device renders never get cropped.
+========================================================= */
+
+@media (max-width: 520px) {
+  /* HERO: one readable hero phone instead of squeezing three tall devices. */
+  .page[data-product="elixa"] .heroVisual {
+    min-height: 585px;
+    margin-inline: 0;
+    overflow: visible;
+  }
+
+  .page[data-product="elixa"] .heroVisual .phoneWrap {
+    width: min(59vw, 230px);
+  }
+
+  .page[data-product="elixa"] .heroVisual .phone1,
+  .page[data-product="elixa"] .heroVisual .phone3 {
+    display: none;
+  }
+
+  .page[data-product="elixa"] .heroVisual .phone2,
+  .page[data-product="elixa"] .heroVisual:hover .phone2 {
+    left: 50%;
+    top: 8px;
+    z-index: 5;
+    transform: translateX(-50%) !important;
+    opacity: 1;
+    filter: none;
+  }
+
+  .page[data-product="elixa"] .heroGlow {
+    width: min(88vw, 360px);
+    opacity: 0.8;
+  }
+
+  /* PRODUCT PREVIEW: horizontal carousel, but phones are sized for the
+     actual available viewport instead of nearly filling the whole width. */
+  .page[data-product="elixa"] .previewSection {
+    overflow: hidden;
+  }
+
+  .page[data-product="elixa"] .previewStage[data-count="2"] {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 72vw;
+    align-items: start;
+    justify-content: start;
+    gap: 14px;
+    width: 100vw;
+    min-height: 575px;
+    margin-inline: calc(50% - 50vw);
+    padding: 20px 14vw 24px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 14vw;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .page[data-product="elixa"] .previewStage[data-count="2"]::-webkit-scrollbar {
+    display: none;
+  }
+
+  .page[data-product="elixa"] .previewStage[data-count="2"] .phoneWrap {
+    width: min(58vw, 225px);
+    max-width: 225px;
+    justify-self: center;
+    align-self: start;
+    margin: 0;
+    transform: none !important;
+    scroll-snap-align: center;
+  }
+
+  .page[data-product="elixa"] .previewStage[data-count="2"] .phoneWrap figcaption {
+    display: none;
+  }
+
+  .page[data-product="elixa"] .phoneRealScreen {
+    border-radius: 34px;
+    padding: 4px;
+  }
+
+  .page[data-product="elixa"] .phoneRealScreen .phoneScreen,
+  .page[data-product="elixa"] .phoneRealScreen::after {
+    border-radius: 29px;
+  }
+
+  .page[data-product="elixa"] .phoneRealScreen::after {
+    inset: 4px;
+  }
+}
+
+@media (max-width: 390px) {
+  .page[data-product="elixa"] .heroVisual {
+    min-height: 540px;
+  }
+
+  .page[data-product="elixa"] .heroVisual .phoneWrap {
+    width: min(58vw, 214px);
+  }
+
+  .page[data-product="elixa"] .previewStage[data-count="2"] {
+    grid-auto-columns: 76vw;
+    min-height: 535px;
+    padding-inline: 12vw;
+    scroll-padding-inline: 12vw;
+  }
+
+  .page[data-product="elixa"] .previewStage[data-count="2"] .phoneWrap {
+    width: min(56vw, 205px);
+    max-width: 205px;
+  }
+}
+
+@media (max-width: 350px) {
+  .page[data-product="elixa"] .heroVisual {
+    min-height: 500px;
+  }
+
+  .page[data-product="elixa"] .heroVisual .phoneWrap {
+    width: min(56vw, 192px);
+  }
+
+  .page[data-product="elixa"] .previewStage[data-count="2"] {
+    min-height: 500px;
+  }
+
+  .page[data-product="elixa"] .previewStage[data-count="2"] .phoneWrap {
+    width: min(54vw, 190px);
+    max-width: 190px;
+  }
+}
+
+
+/* =========================================================
+   ELIXA CRISP SCREEN FIX
+   Real screenshots are raster assets. Keep the actual screen
+   layer free from animation, filters and scaling so browser
+   interpolation does not soften UI text unnecessarily.
+========================================================= */
+
+.page[data-product="elixa"] .phoneRealScreen {
+  animation: none !important;
+  filter: none !important;
+}
+
+.page[data-product="elixa"] .phoneRealScreen .screenImage {
+  object-fit: cover;
+  transform: none !important;
+  filter: none !important;
+  image-rendering: auto;
+  backface-visibility: hidden;
+}
+
+/* Keep the central hero phone at native CSS scale. */
+.page[data-product="elixa"] .heroVisual .phone2,
+.page[data-product="elixa"] .heroVisual:hover .phone2 {
+  transform: translateY(-26px) !important;
+  filter: none !important;
+}
+
+/* Side phones may stay angled, but don't run CSS filters over raster text. */
+.page[data-product="elixa"] .heroVisual .phone1,
+.page[data-product="elixa"] .heroVisual .phone3,
+.page[data-product="elixa"] .heroVisual:hover .phone1,
+.page[data-product="elixa"] .heroVisual:hover .phone3 {
+  filter: none !important;
+}
+
+/* Lower real-screen preview: avoid rotate/scale resampling entirely. */
+.page[data-product="elixa"] .previewStage[data-count="2"] .phone1,
+.page[data-product="elixa"] .previewStage[data-count="2"] .phone2,
+.page[data-product="elixa"] .previewStage[data-count="2"]:hover .phone1,
+.page[data-product="elixa"] .previewStage[data-count="2"]:hover .phone2 {
+  transform: translateY(0) !important;
+  filter: none !important;
+}
+
+/* Mobile already uses a single hero phone; keep it perfectly upright. */
+@media (max-width: 760px) {
+  .page[data-product="elixa"] .heroVisual .phone2,
+  .page[data-product="elixa"] .heroVisual:hover .phone2 {
+    transform: translateX(-50%) !important;
+  }
+}

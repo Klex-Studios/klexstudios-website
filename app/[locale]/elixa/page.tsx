@@ -2,11 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import ProductCaseStudy from "@/components/ProductCaseStudy";
-import {
-  getDictionary,
-  isLocale,
-  type Locale,
-} from "@/lib/i18n";
+import { isLocale, type Locale } from "@/lib/i18n";
 
 type Props = {
   params: Promise<{
@@ -14,9 +10,7 @@ type Props = {
   }>;
 };
 
-async function getLocale(
-  params: Props["params"]
-): Promise<Locale> {
+async function getLocale(params: Props["params"]): Promise<Locale> {
   const { locale } = await params;
 
   if (!isLocale(locale)) {
@@ -30,11 +24,13 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata> {
   const locale = await getLocale(params);
-  const t = getDictionary(locale).elixa;
+  const de = locale === "de";
 
   return {
     title: "Elixa | Klex Studios",
-    description: t.lead,
+    description: de
+      ? "Elixa ist die Partyspiel-App von Klex Studios und befindet sich aktuell im internen Google-Play-Test. Sieben Spiele, schneller Start und echte Produktscreenshots."
+      : "Elixa is the party-game app by Klex Studios and is currently in internal Google Play testing. Seven games, fast setup and real product screenshots.",
     alternates: {
       canonical: `/${locale}/elixa`,
       languages: {
@@ -45,12 +41,10 @@ export async function generateMetadata({
   };
 }
 
-export default async function ElixaPage({
-  params,
-}: Props) {
+export default async function ElixaPage({ params }: Props) {
   const locale = await getLocale(params);
-  const t = getDictionary(locale).elixa;
   const de = locale === "de";
+  const screenRoot = "/images/elixa/screens-real";
 
   return (
     <ProductCaseStudy
@@ -64,215 +58,248 @@ export default async function ElixaPage({
         accent: "#38F06F",
         accentRgb: "56, 240, 111",
 
-        kicker: t.kicker,
+        kicker: de ? "Elixa von Klex Studios" : "Elixa by Klex Studios",
 
         title: (
           <>
-            {t.titleA}
+            {de ? "Keine Werbefallen." : "No ad traps."}
             <br />
-            <span>
-              {t.titleAccent}
-            </span>
+            <span>{de ? "Einfach spielen." : "Just play."}</span>
           </>
         ),
 
-        lead: t.lead,
+        lead: de
+          ? "Elixa ist kurz vor dem Release: Der aktuelle Android-Build läuft im internen Google-Play-Test. Sieben Partyspiele, schneller Einstieg, verschiedene Intensitäten und ein klarer Fokus auf den gemeinsamen Abend statt auf App-Ballast."
+          : "Elixa is close to release: the current Android build is running in internal Google Play testing. Seven party games, fast setup, multiple intensity levels and a clear focus on the night with friends instead of app clutter.",
 
-        primaryLabel: t.primary,
-        secondaryLabel: t.secondary,
+        primaryLabel: de ? "Screens ansehen" : "View screens",
+        secondaryLabel: de ? "Warum Elixa?" : "Why Elixa?",
 
-        status: t.placeholderStatus,
-        build: de
-          ? "Fortgeschrittener Prototyp"
-          : "Advanced prototype",
-        platform: "Mobile",
+        status: de ? "Interner Test" : "Internal testing",
+        build: "Release Candidate",
+        platform: "Android",
+        version: "v1.0.2",
+        updated: "06.10.2026",
 
-        version: de
-          ? "Fortgeschrittener Prototyp"
-          : "Advanced prototype",
-        updated: "02.10.2026",
-
-        snapshot: {
-          kicker: "Current Build",
-          title: de
-            ? "Der Prototyp steht. Jetzt zählt der Feinschliff."
-            : "The prototype exists. Now refinement matters.",
-          lead: de
-            ? "Elixa ist aktuell das am weitesten entwickelte Klex-Studios-Produkt. Die Kernmechanik steht; gearbeitet wird vor allem an Content, Balancing und dem Nutzererlebnis."
-            : "Elixa is currently the most advanced Klex Studios product. The core mechanics are in place; current work focuses on content, balancing and the user experience.",
-          current: de
-            ? "Content & Feinschliff"
-            : "Content & refinement",
-          done: de
-            ? [
-                "Produktidee und Spielprinzip umgesetzt",
-                "Core-Prototyp der Mobile-App",
-                "Grundlegende Spiel- und Rundenlogik",
-              ]
-            : [
-                "Product idea and game concept implemented",
-                "Core mobile app prototype",
-                "Core game and round logic",
-              ],
-          next: de
-            ? [
-                "Mehr Inhalte und bessere Balance",
-                "UI und Spielfluss weiter polieren",
-                "Öffentliche Produktvisuals und Release-Vorbereitung",
-              ]
-            : [
-                "More content and better balancing",
-                "Further polish UI and gameplay flow",
-                "Public product visuals and release preparation",
-              ],
-          note: de
-            ? "Die Preview verbindet vorhandene Produktlogik mit einer verfeinerten visuellen Richtung."
-            : "The preview combines existing product logic with a more refined visual direction.",
-        },
-
-        micro: t.micro,
-
-        features: t.features,
-
-        story: {
-          kicker: t.storyKicker,
-
-          title: (
-            <>
-              {t.storyTitleA}
-              <br />
-              {t.storyTitleB}
-            </>
-          ),
-
-          text: t.storyText,
-
-          points: t.vibePoints.map(
-            (point) => ({
-              title: point,
-              text: de
-                ? "Ein Grundprinzip hinter dem Spielerlebnis und Produktdesign von Elixa."
-                : "A core principle behind Elixa's gameplay and product design.",
-            })
-          ),
-        },
-
-        previews: [
+        heroPreviews: [
           {
-            label: de ? "Spielauswahl" : "Game selection",
-            image: "/images/home/elixa-game-night-v2.webp",
-            eyebrow: "Elixa",
-            title: de
-              ? "In Sekunden ins Spiel."
-              : "Into the game in seconds.",
-            text: de
-              ? "Spielmodus wählen, Gruppe starten und direkt loslegen."
-              : "Choose a mode, start the group and begin immediately.",
-            metric: de ? "Sofort" : "Instant",
-            chips: de
-              ? ["Wahrheit", "Challenge", "Mix"]
-              : ["Truth", "Challenge", "Mix"],
-            action: de ? "Spiel starten" : "Start game",
-            kind: "game",
+            label: de ? "Einstellungen" : "Settings",
+            src: `${screenRoot}/settings.png`,
+            objectPosition: "center top",
           },
           {
-            label: de ? "Spielrunde" : "Game round",
-            eyebrow: de ? "Live im Spiel" : "Live game",
-            title: de
-              ? "Eine Karte. Eine klare Aktion."
-              : "One card. One clear action.",
-            text: de
-              ? "Fragen und Challenges ohne unnötige Menüs oder Unterbrechungen."
-              : "Questions and challenges without unnecessary menus or interruptions.",
-            metric: "3 / 10",
-            metricLabel: de
-              ? "Runde"
-              : "round",
-            chips: de
-              ? ["Frage", "Challenge", "Weiter"]
-              : ["Question", "Challenge", "Next"],
-            action: de ? "Nächste Karte" : "Next card",
-            kind: "round",
+            label: "Home",
+            src: `${screenRoot}/home.png`,
+            objectPosition: "center top",
           },
           {
-            label: de ? "Gruppenmodus" : "Group mode",
-            eyebrow: de ? "Für jede Runde" : "For every group",
-            title: de
-              ? "Die Gruppe bestimmt die Stimmung."
-              : "The group sets the mood.",
-            text: de
-              ? "Spieler, Intensität und Modus lassen sich schnell anpassen."
-              : "Players, intensity and mode can be adjusted quickly.",
-            metric: "2–12",
-            metricLabel: de
-              ? "Spieler"
-              : "players",
-            chips: de
-              ? ["Locker", "Mutig", "Chaos"]
-              : ["Chill", "Bold", "Chaos"],
-            action: de ? "Gruppe bearbeiten" : "Edit group",
-            kind: "setup",
+            label: de ? "Chaos" : "Chaos",
+            src: `${screenRoot}/game-chaos.png`,
+            objectPosition: "center top",
           },
         ],
 
+        snapshot: {
+          kicker: de ? "Release Status" : "Release status",
+          title: de
+            ? "Der Prototyp ist vorbei. Elixa wird gerade getestet."
+            : "The prototype phase is over. Elixa is being tested now.",
+          lead: de
+            ? "Die Kern-App steht und der aktuelle Build ist im internen Google-Play-Test. Der Fokus liegt jetzt auf echten Gerätetests, letzten Fehlern, Feinschliff und einem sauberen Übergang zum öffentlichen Release."
+            : "The core app is in place and the current build is in internal Google Play testing. The focus is now on real-device testing, final bugs, polish and a clean transition to public release.",
+          current: de ? "Internal Testing" : "Internal testing",
+          done: de
+            ? [
+                "Sieben spielbare Modi und Decks",
+                "Spieler-, Deck- und Intensitätsauswahl",
+                "Dark- und Light-Mode sowie Haptik",
+                "Google-Play-Listing und interner Testtrack",
+              ]
+            : [
+                "Seven playable modes and decks",
+                "Player, deck and intensity selection",
+                "Dark and light mode plus haptics",
+                "Google Play listing and internal test track",
+              ],
+          next: de
+            ? [
+                "Tester-Feedback und letzte Bugfixes",
+                "Elixa Plus und Käufe auf echten Geräten prüfen",
+                "Store-Release und Rollout vorbereiten",
+              ]
+            : [
+                "Tester feedback and final bug fixes",
+                "Validate Elixa Plus and purchases on real devices",
+                "Prepare the store release and rollout",
+              ],
+          note: de
+            ? "Die Phone-Mockups auf dieser Seite zeigen jetzt echte Screenshots aus dem aktuellen Build — keine nachgebauten UI-Screens mehr."
+            : "The phone mockups on this page now show real screenshots from the current build — no rebuilt UI screens.",
+        },
+
+        micro: de
+          ? ["Internal Testing", "7 Spiele", "Release Candidate"]
+          : ["Internal testing", "7 games", "Release candidate"],
+
+        features: de
+          ? [
+              {
+                icon: "07",
+                title: "Sieben Spiele",
+                text: "Von Wahrheit oder Trinken über Hot Seat bis Chaos: verschiedene Modi für unterschiedliche Gruppen und Abende.",
+              },
+              {
+                icon: "↯",
+                title: "Direkt im Spiel",
+                text: "Spiel auswählen, Spieler hinzufügen und loslegen. Die App soll den Abend nicht ausbremsen.",
+              },
+              {
+                icon: "◎",
+                title: "Für eure Runde",
+                text: "Decks, Spieler und Intensität lassen sich passend zur Gruppe auswählen und jederzeit anpassen.",
+              },
+              {
+                icon: "✦",
+                title: "Sauber statt nervig",
+                text: "Klare Oberfläche, haptisches Feedback und ein Spielfluss ohne ständige Unterbrechungen.",
+              },
+            ]
+          : [
+              {
+                icon: "07",
+                title: "Seven games",
+                text: "From Truth or Drink and Hot Seat to Chaos: different modes for different groups and nights.",
+              },
+              {
+                icon: "↯",
+                title: "Straight into the game",
+                text: "Pick a game, add players and start. The app should never slow down the night.",
+              },
+              {
+                icon: "◎",
+                title: "Built for your group",
+                text: "Decks, players and intensity can be matched to the group and adjusted whenever needed.",
+              },
+              {
+                icon: "✦",
+                title: "Clean, not annoying",
+                text: "A clear interface, haptic feedback and a game flow without constant interruptions.",
+              },
+            ],
+
+        previews: [
+          {
+            label: de ? "Wer würde eher" : "Who would rather",
+            src: `${screenRoot}/game-question.png`,
+            objectPosition: "center top",
+          },
+          {
+            label: de ? "Spieler" : "Players",
+            src: `${screenRoot}/players.png`,
+            objectPosition: "center top",
+          },
+        ],
+
+        previewKicker: de ? "Echter Build" : "Real build",
+        previewTitle: de ? "Elixa direkt aus der App." : "Elixa straight from the app.",
+        previewLead: de
+          ? "Keine nachgebauten Konzept-Screens: Die animierten Phone-Mockups zeigen echte Screenshots aus dem aktuellen internen Test-Build."
+          : "No rebuilt concept screens: the animated phone mockups show real screenshots from the current internal test build.",
+
+        story: {
+          kicker: de ? "Warum Elixa existiert" : "Why Elixa exists",
+          title: (
+            <>
+              {de ? "Der Abend gehört" : "The night belongs"}
+              <br />
+              {de ? "eurer Runde." : "to your group."}
+            </>
+          ),
+          text: de
+            ? "Viele Partyspiel-Apps fühlen sich wie Werbeflächen mit ein paar Fragen dazwischen an. Elixa dreht das um: Die App soll schnell aus dem Weg gehen, gute Spielmomente erzeugen und sich so anfühlen, als wäre sie für die Gruppe gebaut — nicht gegen sie."
+            : "Many party-game apps feel like ad space with a few questions in between. Elixa flips that around: the app should get out of the way quickly, create good game moments and feel like it was built for the group — not against it.",
+          points: de
+            ? [
+                {
+                  title: "Schneller Start",
+                  text: "Weniger Menüs und Entscheidungen, bevor die erste Runde überhaupt beginnt.",
+                },
+                {
+                  title: "Mehr Abwechslung",
+                  text: "Unterschiedliche Spiele statt immer derselben Kartenlogik mit neuem Namen.",
+                },
+                {
+                  title: "Passend zur Gruppe",
+                  text: "Von locker bis persönlicher, ohne jede Runde gleich eskalieren zu lassen.",
+                },
+                {
+                  title: "Echtes Produkt",
+                  text: "Die Phone-Mockups zeigen echte Screenshots direkt aus dem aktuellen Build.",
+                },
+              ]
+            : [
+                {
+                  title: "Fast setup",
+                  text: "Fewer menus and decisions before the first round even starts.",
+                },
+                {
+                  title: "More variety",
+                  text: "Different games instead of the same card mechanic with a different name.",
+                },
+                {
+                  title: "Fits the group",
+                  text: "From casual to more personal without forcing every round to escalate.",
+                },
+                {
+                  title: "A real product",
+                  text: "The phone mockups show real screenshots directly from the current build.",
+                },
+              ],
+        },
+
         timeline: {
           kicker: "Development",
-
           title: de
-            ? "Vom Spielkonzept zum fertigen Produkt."
-            : "From game concept to finished product.",
-
+            ? "Vom Spielkonzept zum Store-Release."
+            : "From game concept to store release.",
           lead: de
-            ? "Der Kernprototyp steht. Der Fokus liegt jetzt auf Qualität, Inhalt, Feinschliff und einem Produkt, das sich in echten Gruppen schnell und unkompliziert spielen lässt."
-            : "The core prototype exists. The focus now is quality, content, refinement and turning it into a product that feels fast and effortless to play in real groups.",
-
+            ? "Elixa ist nicht mehr in der reinen Prototypenphase. Die App befindet sich im Release-Prozess und wird aktuell im internen Google-Play-Test geprüft."
+            : "Elixa is no longer in a pure prototype phase. The app is in the release process and is currently being validated through internal Google Play testing.",
           items: [
             {
-              title: de
-                ? "Produktidee"
-                : "Product concept",
+              title: de ? "Produktidee" : "Product concept",
               text: de
-                ? "Grundidee, Spielmechanik und Positionierung definieren."
-                : "Define the core idea, game mechanics and positioning.",
+                ? "Positionierung, Spielprinzip und grundlegende Experience definieren."
+                : "Define positioning, game concept and the core experience.",
               status: "done",
             },
             {
-              title: de
-                ? "Core-Prototyp"
-                : "Core prototype",
+              title: de ? "Core-App" : "Core app",
               text: de
-                ? "Die zentralen Spielfunktionen als Mobile-App umsetzen."
-                : "Implement the core game functionality as a mobile app.",
+                ? "Spiele, Spielerlogik, Decks, Settings und zentrale App-Flows umsetzen."
+                : "Implement games, player logic, decks, settings and core app flows.",
               status: "done",
             },
             {
-              meta: de
-                ? "Aktuell"
-                : "Current",
-              title: de
-                ? "Content & Feinschliff"
-                : "Content & refinement",
+              title: de ? "Store & Release Setup" : "Store & release setup",
               text: de
-                ? "Fragen, Spielmodi, Balancing und Nutzererlebnis weiter verbessern."
-                : "Improve questions, game modes, balancing and the overall user experience.",
+                ? "Play-Store-Eintrag, Release-Build und Monetarisierung für Tests vorbereiten."
+                : "Prepare the Play Store listing, release build and monetization for testing.",
+              status: "done",
+            },
+            {
+              meta: de ? "Aktuell" : "Current",
+              title: "Internal Testing",
+              text: de
+                ? "Build auf echten Geräten testen, Käufe prüfen, Fehler finden und letzte Details polieren."
+                : "Test the build on real devices, validate purchases, find bugs and polish the final details.",
               status: "current",
             },
             {
-              title: de
-                ? "Öffentliche Produktvisuals"
-                : "Public product visuals",
+              title: de ? "Öffentlicher Release" : "Public release",
               text: de
-                ? "Echte Screenshots und eine finale Produktdarstellung veröffentlichen."
-                : "Publish real screenshots and a final product presentation.",
-              status: "planned",
-            },
-            {
-              title: de
-                ? "Release-Vorbereitung"
-                : "Release preparation",
-              text: de
-                ? "Stabilität, UX und Veröffentlichung vorbereiten."
-                : "Prepare stability, UX and distribution for release.",
+                ? "Nach bestandenem Test in den regulären Google-Play-Rollout wechseln."
+                : "Move into the regular Google Play rollout after the testing phase is complete.",
               status: "planned",
             },
           ],
@@ -280,26 +307,19 @@ export default async function ElixaPage({
 
         changelog: [
           {
-            date: "02.10.2026",
-            title: de
-              ? "Neue Produkt-Case-Study"
-              : "New product case study",
+            date: "06.10.2026",
+            title: de ? "Interner Google-Play-Test" : "Internal Google Play testing",
             text: de
-              ? "Elixa erhält eine deutlich ausführlichere Darstellung mit Features, Roadmap, Phone-Mockups, Tech Stack und Entwicklungsstatus."
-              : "Elixa now has a much richer presentation with features, roadmap, phone mockups, tech stack and development status.",
+              ? "Elixa befindet sich jetzt im internen Test. Die Website zeigt ab sofort den Release-Status und echte App-Screens direkt in den animierten Phone-Mockups."
+              : "Elixa is now in internal testing. The website now shows the release status and real app screens directly inside the animated phone mockups.",
           },
         ],
 
-        techStack: [
-          "React Native",
-          "Expo",
-          "Supabase",
-          "Product Design",
-        ],
+        techStack: ["React Native", "Expo", "TypeScript", "RevenueCat", "Google Play"],
 
         techNote: de
-          ? "Mobile-App-Entwicklung mit Fokus auf schnellen Spielfluss, klare Nutzerführung und möglichst wenig Reibung."
-          : "Mobile app development focused on fast gameplay, clear user flows and minimal friction.",
+          ? "Mobile-App mit Expo/React Native. Für den Release werden die Android-Distribution über Google Play und die Plus-Käufe über RevenueCat getestet."
+          : "Mobile app built with Expo and React Native. For release, Android distribution through Google Play and Plus purchases through RevenueCat are being tested.",
       }}
     />
   );

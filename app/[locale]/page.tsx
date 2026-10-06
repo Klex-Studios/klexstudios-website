@@ -706,7 +706,7 @@ export default async function HomePage({ params }: Props) {
 
               <Image
 
-                src="/images/home/hero-orbs-v2.webp"
+                src="/images/home/hero-bubbles-glass.png"
 
                 alt=""
 
@@ -734,21 +734,19 @@ export default async function HomePage({ params }: Props) {
 
                 <Image
 
-                  src="/logos/klex-logo.png"
+                  src="/logos/klex-logo2.png"
 
                   alt=""
 
-                  width={160}
+                  width={200}
 
-                  height={160}
+                  height={200}
 
                   sizes="(max-width: 760px) 20vw, 10vw"
 
                 />
 
 
-
-                <span>Klex Studios</span>
 
               </div>
 

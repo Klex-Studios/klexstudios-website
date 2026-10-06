@@ -33,6 +33,7 @@ type TimelineItem = {
 type Preview = {
   label: string;
   src?: string;
+  objectPosition?: string;
   image?: string;
   eyebrow?: string;
   title?: string;
@@ -68,6 +69,26 @@ type BuildSnapshot = {
   note?: string;
 };
 
+type HeroMedia = {
+  src: string;
+  alt: string;
+  badge?: string;
+};
+
+type ShowcaseItem = {
+  src: string;
+  alt: string;
+  label?: string;
+};
+
+type Showcase = {
+  kicker: string;
+  title: string;
+  lead: string;
+  hero?: ShowcaseItem;
+  items: readonly ShowcaseItem[];
+};
+
 export type ProductCaseStudyConfig = {
   key: ProductKey;
 
@@ -93,6 +114,9 @@ export type ProductCaseStudyConfig = {
   progress?: number;
 
   snapshot?: BuildSnapshot;
+  heroMedia?: HeroMedia;
+  heroPreviews?: readonly Preview[];
+  showcase?: Showcase;
 
   micro: readonly string[];
 
@@ -105,7 +129,10 @@ export type ProductCaseStudyConfig = {
     points?: readonly StoryPoint[];
   };
 
-  previews: readonly Preview[];
+  previews?: readonly Preview[];
+  previewKicker?: string;
+  previewTitle?: string;
+  previewLead?: string;
 
   timeline: {
     kicker: string;
@@ -223,6 +250,7 @@ export default function ProductCaseStudy({
     <div
       className={styles.page}
       data-product-page
+      data-product={config.key}
       lang={locale}
       style={
         {
@@ -292,23 +320,49 @@ export default function ProductCaseStudy({
             data-reveal="fade"
             data-reveal-delay="120"
             data-parallax
+            data-count={(config.heroPreviews ?? config.previews ?? []).slice(0, 3).length}
           >
             <div
               className={styles.heroGlow}
               aria-hidden="true"
             />
 
-            {config.previews
-              .slice(0, 3)
-              .map((preview, index) => (
-                <PhonePreview
-                  key={preview.label}
-                  preview={preview}
-                  logo={config.logo}
-                  fallback={ui.previewFallback}
-                  index={index}
+            {config.heroMedia ? (
+              <div className={styles.heroMediaFrame}>
+                <Image
+                  src={config.heroMedia.src}
+                  alt={config.heroMedia.alt}
+                  fill
+                  priority
+                  sizes="(max-width: 1100px) 100vw, 58vw"
+                  className={styles.heroMediaImage}
                 />
-              ))}
+
+                <div
+                  className={styles.heroMediaShade}
+                  aria-hidden="true"
+                />
+
+                {config.heroMedia.badge && (
+                  <span className={styles.heroMediaBadge}>
+                    <i aria-hidden="true" />
+                    {config.heroMedia.badge}
+                  </span>
+                )}
+              </div>
+            ) : (
+              (config.heroPreviews ?? config.previews ?? [])
+                .slice(0, 3)
+                .map((preview, index) => (
+                  <PhonePreview
+                    key={preview.label}
+                    preview={preview}
+                    logo={config.logo}
+                    fallback={ui.previewFallback}
+                    index={index}
+                  />
+                ))
+            )}
           </div>
         </section>
 
@@ -503,45 +557,118 @@ export default function ProductCaseStudy({
         </section>
 
         {/* PRODUCT PREVIEW */}
-        <section
-          id="preview"
-          className={`${styles.section} ${styles.previewSection}`}
-          aria-labelledby={`${config.key}-preview`}
-        >
-          <div className={styles.previewHeading}>
-            <SectionHeading
-              kicker={ui.previewKicker}
-              title={ui.previewTitle}
-              id={`${config.key}-preview`}
-            />
-
-            <p data-reveal="up">
-              {ui.previewLead}
-            </p>
-          </div>
-
-          <div
-            className={styles.previewStage}
-            data-reveal="fade"
-            data-parallax
+        {config.showcase ? (
+          <section
+            id="preview"
+            className={`${styles.section} ${styles.previewSection}`}
+            aria-labelledby={`${config.key}-preview`}
           >
-            <div
-              className={styles.previewGlow}
-              aria-hidden="true"
-            />
-
-            {config.previews.map((preview, index) => (
-              <PhonePreview
-                key={preview.label}
-                preview={preview}
-                logo={config.logo}
-                fallback={ui.previewFallback}
-                index={index}
-                large
+            <div className={styles.previewHeading}>
+              <SectionHeading
+                kicker={config.showcase.kicker}
+                title={config.showcase.title}
+                id={`${config.key}-preview`}
               />
-            ))}
-          </div>
-        </section>
+
+              <p data-reveal="up">
+                {config.showcase.lead}
+              </p>
+            </div>
+
+            {config.showcase.hero && (
+              <figure
+                className={styles.showcaseHero}
+                data-reveal="fade"
+                data-parallax
+              >
+                <Image
+                  src={config.showcase.hero.src}
+                  alt={config.showcase.hero.alt}
+                  fill
+                  sizes="(max-width: 760px) 100vw, 1400px"
+                  className={styles.showcaseHeroImage}
+                />
+
+                {config.showcase.hero.label && (
+                  <figcaption>{config.showcase.hero.label}</figcaption>
+                )}
+              </figure>
+            )}
+
+            <div className={styles.showcaseGrid}>
+              {config.showcase.items.map((item, index) => (
+                <figure
+                  key={`${item.src}-${index}`}
+                  className={styles.showcaseCard}
+                  data-reveal="up"
+                  data-reveal-delay={(index % 3) * 60}
+                  data-tilt
+                >
+                  <div className={styles.showcaseCardMedia}>
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      fill
+                      sizes="(max-width: 520px) 88vw, (max-width: 900px) 46vw, 30vw"
+                      className={styles.showcaseCardImage}
+                    />
+                  </div>
+
+                  {item.label && (
+                    <figcaption>
+                      <span aria-hidden="true" />
+                      {item.label}
+                    </figcaption>
+                  )}
+                </figure>
+              ))}
+            </div>
+          </section>
+        ) : (
+          config.previews &&
+          config.previews.length > 0 && (
+            <section
+              id="preview"
+              className={`${styles.section} ${styles.previewSection}`}
+              aria-labelledby={`${config.key}-preview`}
+            >
+              <div className={styles.previewHeading}>
+                <SectionHeading
+                  kicker={config.previewKicker ?? ui.previewKicker}
+                  title={config.previewTitle ?? ui.previewTitle}
+                  id={`${config.key}-preview`}
+                />
+
+                <p data-reveal="up">
+                  {config.previewLead ?? ui.previewLead}
+                </p>
+              </div>
+
+              <div
+                className={styles.previewStage}
+                data-reveal="fade"
+                data-parallax
+                data-count={config.previews.length}
+              >
+                <div
+                  className={styles.previewGlow}
+                  aria-hidden="true"
+                />
+
+                {config.previews.map((preview, index) => (
+                  <PhonePreview
+                    key={preview.label}
+                    preview={preview}
+                    logo={config.logo}
+                    fallback={ui.previewFallback}
+                    index={index}
+                    large
+                  />
+                ))}
+              </div>
+            </section>
+          )
+        )}
 
         {/* STORY */}
         <section
@@ -796,9 +923,9 @@ function PhonePreview({
       className={`${styles.phoneWrap} ${
         large ? styles.phoneLarge : ""
       } ${styles[`phone${index + 1}`] ?? ""}`}
-      data-parallax-layer={depth}
+      data-parallax-layer={preview.src ? undefined : depth}
     >
-      <div className={styles.phone}>
+      <div className={`${styles.phone} ${preview.src ? styles.phoneRealScreen : ""}`}>
         <div
           className={styles.dynamicIsland}
           aria-hidden="true"
@@ -810,8 +937,11 @@ function PhonePreview({
               src={preview.src}
               alt={preview.label}
               fill
-              sizes="300px"
+              unoptimized
+              priority={large || index === 1}
+              sizes={large ? "(max-width: 760px) 44vw, 360px" : "(max-width: 1100px) 26vw, 320px"}
               className={styles.screenImage}
+              style={{ objectPosition: preview.objectPosition ?? "center top" }}
             />
           ) : (
             <ConceptPreview

@@ -579,3 +579,92 @@
     display: none;
   }
 }
+
+/* KLEX_BUBBLE_INTEGRATION_START
+   5 getrennte Bilder bleiben erhalten:
+   1 Bubble-Basis + 4 Logo-Layer.
+   Die Bubble-Basis wird per CSS-Maske freigestellt, damit kein rechteckiger
+   Bildhintergrund mehr sichtbar ist. */
+.heroImage {
+  aspect-ratio: 1448 / 1086;
+  object-fit: contain;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201448%201086%22%3E%0A%3Cfilter%20id%3D%22b%22%20x%3D%22-5%25%22%20y%3D%22-5%25%22%20width%3D%22110%25%22%20height%3D%22110%25%22%3E%3CfeGaussianBlur%20stdDeviation%3D%224%22%2F%3E%3C%2Ffilter%3E%0A%3Cg%20fill%3D%22white%22%20filter%3D%22url%28%23b%29%22%3E%0A%3Cellipse%20cx%3D%22300%22%20cy%3D%22234%22%20rx%3D%22151%22%20ry%3D%22146%22%2F%3E%0A%3Cellipse%20cx%3D%22691%22%20cy%3D%22444%22%20rx%3D%22261%22%20ry%3D%22249%22%2F%3E%0A%3Cellipse%20cx%3D%221118%22%20cy%3D%22474%22%20rx%3D%22144%22%20ry%3D%22139%22%2F%3E%0A%3Cellipse%20cx%3D%22507%22%20cy%3D%22764%22%20rx%3D%22146%22%20ry%3D%22151%22%2F%3E%0A%3Cpath%20d%3D%22M395%20318%20L431%20310%20L477%20331%20L505%20352%20L481%20380%20L446%20376%20L413%20359%20L387%20344%20Z%22%2F%3E%0A%3Cpath%20d%3D%22M924%20407%20L958%20421%20L989%20433%20L1015%20454%20L995%20486%20L968%20491%20L942%20474%20L920%20460%20Z%22%2F%3E%0A%3Cpath%20d%3D%22M578%20611%20L606%20625%20L607%20653%20L585%20681%20L562%20706%20L531%20695%20L530%20666%20L549%20639%20Z%22%2F%3E%0A%3C%2Fg%3E%3C%2Fsvg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201448%201086%22%3E%0A%3Cfilter%20id%3D%22b%22%20x%3D%22-5%25%22%20y%3D%22-5%25%22%20width%3D%22110%25%22%20height%3D%22110%25%22%3E%3CfeGaussianBlur%20stdDeviation%3D%224%22%2F%3E%3C%2Ffilter%3E%0A%3Cg%20fill%3D%22white%22%20filter%3D%22url%28%23b%29%22%3E%0A%3Cellipse%20cx%3D%22300%22%20cy%3D%22234%22%20rx%3D%22151%22%20ry%3D%22146%22%2F%3E%0A%3Cellipse%20cx%3D%22691%22%20cy%3D%22444%22%20rx%3D%22261%22%20ry%3D%22249%22%2F%3E%0A%3Cellipse%20cx%3D%221118%22%20cy%3D%22474%22%20rx%3D%22144%22%20ry%3D%22139%22%2F%3E%0A%3Cellipse%20cx%3D%22507%22%20cy%3D%22764%22%20rx%3D%22146%22%20ry%3D%22151%22%2F%3E%0A%3Cpath%20d%3D%22M395%20318%20L431%20310%20L477%20331%20L505%20352%20L481%20380%20L446%20376%20L413%20359%20L387%20344%20Z%22%2F%3E%0A%3Cpath%20d%3D%22M924%20407%20L958%20421%20L989%20433%20L1015%20454%20L995%20486%20L968%20491%20L942%20474%20L920%20460%20Z%22%2F%3E%0A%3Cpath%20d%3D%22M578%20611%20L606%20625%20L607%20653%20L585%20681%20L562%20706%20L531%20695%20L530%20666%20L549%20639%20Z%22%2F%3E%0A%3C%2Fg%3E%3C%2Fsvg%3E");
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  filter:
+    drop-shadow(0 14px 38px rgba(16, 147, 255, .10))
+    drop-shadow(0 0 22px rgba(77, 238, 197, .04));
+}
+
+.orbBrand {
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  gap: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Alte DOM-Logos/Texte unsichtbar lassen.
+   Die vier separaten integrierten Logo-Assets werden per ::before gerendert. */
+.orbBrand > img,
+.orbBrand > span {
+  display: none !important;
+}
+
+.orbBrand::before {
+  content: "";
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: .92;
+  filter:
+    saturate(.9)
+    contrast(.98)
+    drop-shadow(0 0 9px rgba(215, 234, 255, .12));
+}
+
+.studioOrb {
+  left: 48.2%;
+  top: 40.6%;
+  width: 34%;
+}
+.studioOrb::before {
+  background-image: url('/images/home/hero-logo-klex.png');
+}
+
+.noxaOrb {
+  left: 20.4%;
+  top: 21.5%;
+  width: 21%;
+}
+.noxaOrb::before {
+  background-image: url('/images/home/hero-logo-noxa.png');
+}
+
+.resonOrb {
+  left: 77.4%;
+  top: 43.6%;
+  width: 20%;
+}
+.resonOrb::before {
+  background-image: url('/images/home/hero-logo-reson.png');
+}
+
+.elixaOrb {
+  left: 35%;
+  top: 70.9%;
+  width: 21%;
+}
+.elixaOrb::before {
+  background-image: url('/images/home/hero-logo-elixa.png');
+}
+/* KLEX_BUBBLE_INTEGRATION_END */
